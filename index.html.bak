@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoAI Hub — Гайды по Web3 и ИИ для новичков</title>
+    <meta name="description" content="Пошаговые инструкции по криптовалюте, торговым ИИ-ботам и заработку. Начни свой путь в Web3 правильно.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Навигация -->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Crypto<span>AI</span> Hub</a>
+            <nav class="nav-links">
+                <a href="#guides-section" class="nav-link">Гайды</a>
+                <a href="legal/disclaimer.html" class="nav-link">Дисклеймер</a>
+                <a href="https://www.binance.com/register?ref=SHARA10" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный баннер (Hero) -->
+    <section class="hero">
+        <div class="container">
+            <h1>Освой Web3 и ИИ с нуля</h1>
+            <p>Простые пошаговые инструкции, разборы криптобирж и настройка нейросетей для анализа рынка без сложной терминологии.</p>
+            <a href="#guides-section" class="btn-main">Начать обучение</a>
+        </div>
+    </section>
+
+    <!-- Сетка с гайдами -->
+    <main class="guides-section" id="guides-section">
+        <div class="container">
+            <h2 class="section-title">Актуальные инструкции</h2>
+            <div class="guides-grid">
+                <!-- START_CRYPTO_AI_CARDS -->
+
+                <article class="guide-card">
+                    <img src="guides/binance-square-guide.png" alt="Как использовать Binance Square для поиска сильных крипто-трендов и инсайдов" class="card-thumb">
+                    <div class="card-badge">Трафик и блоги</div>
+                    <h3>Как использовать Binance Square для поиска сильных крипто-трендов и инсайдов</h3>
+                    <p>Инструкция по работе с главной социальной платформой для крипто-энтузиастов: поиск авторов, аналитика и привлечение аудитории.</p>
+                    <a href="guides/binance-square-guide.html" class="card-link">Читать гайд &rarr;</a>
+                </article>
+                <article class="guide-card">
+                    <img src="guides/altcoin-fundamental-analysis.png" alt="Как анализировать альткоины перед покупкой: Руководство по фундаментальному анализу" class="card-thumb">
+                    <div class="card-badge">Инвестиции</div>
+                    <h3>Как анализировать альткоины перед покупкой: Руководство по фундаментальному анализу</h3>
+                    <p>На что смотреть при выборе токена: токеномика, команда проекта, белая книга (Whitepaper) и рыночная капитализация.</p>
+                    <a href="guides/altcoin-fundamental-analysis.html" class="card-link">Читать гайд &rarr;</a>
+                </article>
+                <article class="guide-card">
+                    <img src="guides/crypto-technical-analysis.png" alt="Основы технического анализа: Как читать графики криптовалют и находить точки входа" class="card-thumb">
+                    <div class="card-badge">Аналитика</div>
+                    <h3>Основы технического анализа: Как читать графики криптовалют и находить точки входа</h3>
+                    <p>Учимся понимать уровни поддержки и сопротивления, трендовые линии и классические фигуры технического анализа.</p>
+                    <a href="guides/crypto-technical-analysis.html" class="card-link">Читать гайд &rarr;</a>
+                </article>
+                <article class="guide-card">
+                    <img src="guides/crypto-futures-trading.png" alt="Введение во фьючерсную торговлю: Как минимизировать риски и не ликвидировать баланс" class="card-thumb">
+                    <div class="card-badge">Фьючерсы</div>
+                    <h3>Введение во фьючерсную торговлю: Как минимизировать риски и не ликвидировать баланс</h3>
+                    <p>Что такое кредитное плечо, маржинальные требования, ордера Stop-Loss и Take-Profit. Базовые правила выживания на рынке.</p>
+                    <a href="guides/crypto-futures-trading.html" class="card-link">Читать гайд &rarr;</a>
+                </article>
+                <article class="guide-card">
+                    <img src="guides/binance-earn-guide.png" alt="Как получать пассивный доход с помощью Binance Earn: Полное руководство по стейкингу" class="card-thumb">
+                    <div class="card-badge">Пассивный доход</div>
+                    <h3>Как получать пассивный доход с помощью Binance Earn: Полное руководство по стейкингу</h3>
+                    <p>Разбор гибкого и фиксированного стейкинга, автоинвестирования и Launchpool. Как заставить крипту работать на вас.</p>
+                    <a href="guides/binance-earn-guide.html" class="card-link">Читать гайд &rarr;</a>
+                </article>
+                <article class="guide-card">
+                    <img src="guides/binance-grid-bot.png" alt="Настройка спотового сеточного бота на Binance: Автоматический трейдинг для новичков" class="card-thumb">
+                    <div class="card-badge">Торговые боты</div>
+                    <h3>Настройка спотового сеточного бота на Binance: Автоматический трейдинг для новичков</h3>
+                    <p>Пошагово разбираем Grid Trading: как запустить бота, выставить ценовые диапазоны и получать прибыль на волатильности рынка.</p>
+                    <a href="guides/binance-grid-bot.html" class="card-link">Читать гайд &rarr;</a>
+                </article>
+                <article class="guide-card">
+                    <img src="guides/p2p-trading-guide.png" alt="Руководство по P2P-торговле: Как безопасно покупать и продавать криптовалюту за рубли" class="card-thumb">
+                    <div class="card-badge">P2P-Торговля</div>
+                    <h3>Руководство по P2P-торговле: Как безопасно покупать и продавать криптовалюту за рубли</h3>
+                    <p>Пошаговый гайд по обмену фиата на крипту: выбор мерчанта, защита от треугольников и безопасный вывод на карту в 2026 году.</p>
+                    <a href="guides/p2p-trading-guide.html" class="card-link">Читать гайд &rarr;</a>
+                </article>
+                <article class="guide-card">
+                    <img src="guides/crypto-wallet-safety.png" alt="Безопасность криптокошельков: Как защитить свои цифровые активы" class="card-thumb">
+                    <div class="card-badge">Безопасность</div>
+                    <h3>Безопасность криптокошельков: Как защитить свои цифровые активы</h3>
+                    <p>Разбор типов кошельков (горячие, холодные), правил хранения сид-фраз и защиты от фишинга в Web3.</p>
+                    <a href="guides/crypto-wallet-safety.html" class="card-link">Читать гайд &rarr;</a>
+                </article>
+                <article class="guide-card">
+                    <img src="guides/ai-crypto-trading.png" alt="Использование ИИ для анализа криптовалютного рынка" class="card-thumb">
+                    <div class="card-badge">ИИ и Трейдинг</div>
+                    <h3>Использование ИИ для анализа криптовалютного рынка</h3>
+                    <p>Настраиваем локальные и облачные нейросети для поиска паттернов, анализа новостей и составления портфеля.</p>
+                    <a href="guides/ai-crypto-trading.html" class="card-link">Читать гайд &rarr;</a>
+                </article>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 CryptoAI Hub. Все права защищены.</p>
+            <p class="footer-note">Контент на сайте носит информационный характер и не является финансовой рекомендацией.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

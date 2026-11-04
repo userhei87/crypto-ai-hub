@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройка спотового сеточного бота на Binance: Автоматический трейдинг для новичков — CryptoAI Hub</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">Crypto<span>AI</span> Hub</a>
+            <nav class="nav-links">
+                <a href="../index.html#guides-section" class="nav-link">На главную</a>
+                <a href="https://www.binance.com/register?ref=SHARA10" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="guides-section">
+        <div class="container" style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+                        
+            <div class="article-cover" style="margin-bottom: 30px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                <img src="binance-grid-bot.png" alt="Настройка спотового сеточного бота на Binance: Автоматический трейдинг для новичков" style="width: 100%; max-height: 450px; object-fit: cover; display: block;">
+            </div>
+
+            <div class="promo-banner-inline" style="background: linear-gradient(135deg, #1e2026, #2b3139); border-left: 4px solid #f3ba2f; padding: 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-align: center;">
+                <h4 style="color: #f3ba2f; margin: 0 0 12px 0; font-size: 1.2rem; font-weight: 600;">🔥 Бонус для читателей CryptoAI Hub</h4>
+                <p style="color: #eaeaea; margin: 0 0 20px 0; font-size: 0.95rem; line-height: 1.6;">Регистрируйтесь на Binance по нашей ссылке и получите постоянную скидку 10% на все спотовые комиссии, а также приветственный инвесторский бонус до $100.</p>
+                <a href="https://www.binance.com/register?ref=SHARA10" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #f3ba2f; color: #000; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 0.95rem; transition: background 0.2s; margin: 0 auto;">Получить скидку 10% на Binance &rarr;</a>
+            </div>
+
+            <div class="article-text" style="color: var(--text-main); font-size: 1.1rem; line-height: 1.8;">
+                <h2>Настройка спотового сеточного бота на Binance: Автоматический трейдинг для новичков</h2>
+<h3>Введение</h3>
+<p>Автоматический трейдинг может значительно сократить вашу работу с криптовалютами и повысить доходы. В этой статье мы расскажем, как настроить спотовый сеточный бот на Binance для автоматизации трейдинга. Обратите внимание, что автоматический трейдинг связан с рисками, и всегда следует тщательно изучить все аспекты перед его использованием.</p>
+<h3>Почему выбрать Binance</h3>
+<p>Binance является одним из крупнейших бирж для криптовалют и предлагает широкий спектр инструментов для торговли. Она поддерживает автоматический трейдинг через API, что позволяет создавать собственные боты.</p>
+<h3>Необходимые инструменты</h3>
+<ul>
+<li>Криптовалютная биржа Binance</li>
+<li>Бесплатный API ключ на Binance</li>
+<li>Программное обеспечение для написания кода (например, Python)</li>
+<li>Интерпретатор Python (например, Anaconda)</li>
+</ul>
+<h3>Шаг 1: Создание API ключа на Binance</h3>
+<p>Первым делом вам нужно создать API ключ на Binance. Для этого перейдите в раздел "API" в настройках вашего аккаунта и создайте новый API ключ с правами "Торговля" и "История торговли". Запишите ключ и секрет, они понадобятся для подключения к API.</p>
+<h3>Шаг 2: Установка библиотеки Python для работы с Binance API</h3>
+<p>Для работы с Binance API установите библиотеку <code>python-binance</code>. Вы можете сделать это с помощью pip:</p>
+<pre><code>pip install python-binance
+</code></pre>
+<h3>Шаг 3: Написание кода для создания сеточного бота</h3>
+<p>Вот пример кода на Python для создания базового сеточного бота на Binance. Этот бот будет следить за ценой криптовалюты и совершать покупки и продажи при достижении определенных уровней сетки.</p>
+<pre><code>
+import time
+from binance.client import Client
+
+# Ваш API ключ и секрет
+api_key = 'Ваш_API_ключ'
+api_secret = 'Ваш_секретный_ключ'
+
+# Создание клиента Binance
+client = Client(api_key, api_secret)
+
+# Настройка параметров
+symbol = 'BTCUSDT'  # Замените на нужную вам пару
+grid_size = 10  # Количество уровней сетки
+step_size = 0.0001  # Размер шага сетки
+initial_balance = 100  # Начальный баланс в USDT
+
+# Функция для получения текущей цены
+def get_current_price():
+    price_info = client.get_symbol_ticker(symbol=symbol)
+    return float(price_info['price'])
+
+# Функция для создания сетки
+def create_grid():
+    grid = []
+    current_price = get_current_price()
+    for i in range(grid_size):
+        grid.append(current_price + i * step_size)
+        grid.append(current_price - i * step_size)
+    return sorted(grid)
+
+# Функция для покупки
+def buy(amount, price):
+    order = client.order_market_buy(
+        symbol=symbol,
+        quantity=amount
+    )
+    print(f"Покупка: {amount} BTC за {price} USDT")
+
+# Функция для продажи
+def sell(amount, price):
+    order = client.order_market_sell(
+        symbol=symbol,
+        quantity=amount
+    )
+    print(f"Продажа: {amount} BTC за {price} USDT")
+
+# Создание сетки и начальная цена
+grid = create_grid()
+current_price = get_current_price()
+
+# Главный цикл бота
+while True:
+    current_price = get_current_price()
+    for price in grid:
+        if price &gt; current_price and price in grid:
+            # Проверка на наличие открытых позиций
+            open_orders = client.get_open_orders(symbol=symbol)
+            if not open_orders:
+                buy_amount = initial_balance / current_price
+                buy(buy_amount, current_price)
+                grid.remove(price)
+                break
+        elif price &lt; current_price and price in grid:
+            # Проверка на наличие открытых позиций
+            open_orders = client.get_open_orders(symbol=symbol)
+            if not open_orders:
+                sell_amount = initial_balance / current_price
+                sell(sell_amount, current_price)
+                grid.remove(price)
+                break
+    time.sleep(1)  # Задержка для избежания перегрузки биржи
+</code></pre>
+<h3>Шаг 4: Тестирование бота</h3>
+<p>Перед запуском бота на реальных деньгах протестируйте его на исторических данных или в симуляторе Binance. Это поможет вам выявить и исправить ошибки в коде.</p>
+<h3>Шаг 5: Запуск бота</h3>
+<p>После успешного тестирования вы можете запустить бота на реальных деньгах. Убедитесь, что у вас есть достаточно средств на счете и что вы понимаете все риски автоматизированного трейдинга.</p>
+<h3>Важные предупреждения</h3>
+<ul>
+<li>Автоматический трейдинг связан с рисками. Будьте осторожны и всегда используйте стоп-линии.</li>
+<li>Не забывайте про комиссии Binance. Они могут значительно уменьшить ваш прибыль.</li>
+<li>Изучите локальные модели (например, семейство Qwen через Ollama) для анализа рынка и улучшения стратегии.</li>
+</ul>
+<h3>Заключение</h3>
+<p>В данной статье мы рассмотрели, как настроить спотовый сеточный бот на Binance для автоматизированного трейдинга. Несмотря на то что автоматический трейдинг требует тщательного анализа и управления рисками, он может значительно сократить вашу работу и повысить доходы. Будьте осторожны и всегда тщательно изучайте все аспекты перед его использованием.</p>
+            </div>
+
+            <div class="promo-banner-footer" style="background: #1e2026; border: 1px solid #2b3139; padding: 30px; border-radius: 12px; margin-top: 40px; text-align: center;">
+                <h3 style="color: #fff; margin: 0 0 10px 0; font-size: 1.5rem;">Готовы применить знания на практике?</h3>
+                <p style="color: #b7bdc6; margin: 0 0 20px 0; font-size: 1rem;">Откройте аккаунт сегодня, зафиксируйте за собой сниженные комиссии и начните собирать свой первый криптопортфель с поддержкой искусственного интеллекта.</p>
+                <a href="https://www.binance.com/register?ref=SHARA10" target="_blank" rel="noopener noreferrer" class="btn-ref" style="display: inline-block; padding: 12px 30px; font-size: 1rem; text-decoration: none; background-color: #00f2fe; color: #0b0e11;">Зарегистрироваться на Binance со скидкой 10%</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container"><p>&copy; 2026 CryptoAI Hub. Все права защищены.</p></div>
+    </footer>
+</body>
+</html>
