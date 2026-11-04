@@ -10,9 +10,9 @@ GUIDES_DIR = os.path.join(PROJECT_DIR, "guides")
 BINANCE_REF_URL = "https://www.binance.com/register?ref=SHARA10"
 
 # Конфигурация для Гайда №1
-TOPIC = "Как зарегистрироваться на Binance и пройти верификацию в 2026 году"
-file_name = "binance-reg.html"
-img_name = "binance-reg.png"
+TOPIC = "Продвинутый риск-менеджмент: Как не потерять депозит на Binance в 2026 году"
+file_name = "crypto-risk-management.html"
+img_name = "crypto-risk-management.png"
 
 PROMPT = f"""
 Ты профессиональный SEO-копирайтер и эксперт в Web3. 
@@ -34,7 +34,7 @@ PROMPT = f"""
 
 def generate_article():
     logging.info("🤖 Подключаюсь к локальной Ollama...")
-    logging.info("⏳ Видеокарта GTX 1070 начала генерацию текста Гайда №1. Пожалуйста, подождите...")
+    logging.info("⏳ Видеокарта GTX 1070 начала генерацию текста для темы. Пожалуйста, подождите...")
     
     # Сначала безопасно создаем папку, если её нет
     if not os.path.exists(GUIDES_DIR):
