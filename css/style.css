@@ -388,3 +388,21 @@ body {
         font-size: 1.5rem;
     }
 }
+
+/* Адаптивность для блоков кода и промптов */
+.article-text pre {
+    background-color: #1e2026; /* Темный фон в стиле Binance */
+    border: 1px solid #2b3139;
+    border-radius: 6px;
+    padding: 15px;
+    overflow-x: auto;         /* Полоса прокрутки, если строка слишком длинная */
+    white-space: pre-wrap;     /* Принудительный перенос длинных строк на новую строку */
+    word-wrap: break-word;     /* Разрыв слишком длинных слов, чтобы не ломать сетку */
+}
+
+.article-text code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f3ba2f;            /* Желтый акцентный цвет для кода */
+    font-size: 0.95rem;
+}
+
