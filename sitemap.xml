@@ -2,62 +2,67 @@
 <urlset xmlns="http://sitemaps.org">
   <url>
     <loc>https://userhei87.github.io/crypto-ai-hub//index.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://userhei87.github.io/crypto-ai-hub//guides/ai-crypto-trading.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://userhei87.github.io/crypto-ai-hub//guides/ai-memecoin-analysis.html</loc>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://userhei87.github.io/crypto-ai-hub//guides/altcoin-fundamental-analysis.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://userhei87.github.io/crypto-ai-hub//guides/binance-earn-guide.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://userhei87.github.io/crypto-ai-hub//guides/binance-grid-bot.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://userhei87.github.io/crypto-ai-hub//guides/binance-reg.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://userhei87.github.io/crypto-ai-hub//guides/binance-square-guide.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://userhei87.github.io/crypto-ai-hub//guides/crypto-futures-trading.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://userhei87.github.io/crypto-ai-hub//guides/crypto-risk-management.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://userhei87.github.io/crypto-ai-hub//guides/crypto-technical-analysis.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://userhei87.github.io/crypto-ai-hub//guides/crypto-wallet-safety.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://userhei87.github.io/crypto-ai-hub//guides/p2p-trading-guide.html</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
