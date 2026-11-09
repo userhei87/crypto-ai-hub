@@ -388,4 +388,11 @@ body {
         font-size: 1.5rem;
     }
 }
+/* Системный перенос длинных строк в блоках кода для всего сайта */
+pre, code {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    word-break: break-all;
+}
+
 
