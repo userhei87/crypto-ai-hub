@@ -27,7 +27,7 @@ PROMPT = f"""
    - <p>Обычные абзацы текста</p>
    - <strong>Важные термины или предупреждения</strong>
    - <ul> и <li> для списков.
-   - Для блоков кода используй строго: <pre style="white-space: pre-wrap; word-wrap: break-word; background: #1e2026; padding: 15px; border-radius: 6px; border: 1px solid #2b3139;"><code style="color: #f3ba2f;">...</code></pre>
+   - Для блоков кода и промптов ОБЯЗАТЕЛЬНО используй строго: <pre style="white-space: pre-wrap; word-wrap: break-word; overflow-x: auto;"><code>...</code></pre>
 3. Пиши максимально доступно, избегая сложного сленга. Опиши чек-лист анализа (ликвидность, холдеры, проверка на скам/Rug Pull).
 4. Обязательно дай готовый системный промпт для локальной модели qwen2.5-coder, который помогает оценивать код смарт-контракта мемкоина на уязвимости (оберни его в теги <pre><code>).
 5. Если в тексте статьи ты даешь ссылки на биржу Binance, ОБЯЗАТЕЛЬНО используй реферальный адрес {BINANCE_REF_URL} с атрибутами target="_blank" rel="noopener noreferrer". При упоминании биржи используй текст "официальный сайт Binance".
