@@ -15,7 +15,7 @@ INDEX_FILE = os.path.join(PROJECT_DIR, "index.html")
 # Ваша персональная реферальная ссылка со скидкой 10%
 BINANCE_REF_URL = "https://www.binance.com/register?ref=SHARA10"
 
-# Полный список из 10 статей
+# Полный список статей
 GUIDES_DATA = {
     "binance-reg.html": (
         "Как зарегистрироваться на Binance и пройти верификацию в 2026 году", 
