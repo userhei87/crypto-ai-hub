@@ -2,13 +2,13 @@ import os
 from datetime import datetime
 
 # НАСТРОЙКА: Замените 'ВАШ_НИКНЕЙМ' на ваш логин на GitHub после регистрации
-BASE_URL = "https://userhei87.github.io/crypto-ai-hub/" 
+BASE_URL = "https://userhei87.github.io/crypto-ai-hub" 
 
 def generate_sitemap():
     print("🤖 Запуск генерации sitemap.xml...")
     
     xml_content = '<?xml version="1.0" encoding="UTF-8"?>\n'
-    xml_content += '<urlset xmlns="http://sitemaps.org">\n'
+    xml_content += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     
     current_date = datetime.today().strftime('%Y-%m-%d')
     
@@ -19,8 +19,18 @@ def generate_sitemap():
         xml_content += f"    <lastmod>{current_date}</lastmod>\n"
         xml_content += f"    <priority>1.0</priority>\n"
         xml_content += f"  </url>\n"
+        print(" -> Добавлен в карту: index.html")
     
-    # 2. Сканируем папку guides/
+    # [НОВОЕ] 2. Добавляем страницу новостей из корня проекта
+    if os.path.exists("news.html"):
+        xml_content += f"  <url>\n"
+        xml_content += f"    <loc>{BASE_URL}/news.html</loc>\n"
+        xml_content += f"    <lastmod>{current_date}</lastmod>\n"
+        xml_content += f"    <priority>0.9</priority>\n"
+        xml_content += f"  </url>\n"
+        print(" -> Добавлен в карту: news.html")
+
+    # 3. Сканируем папку guides/
     guides_dir = "guides"
     if os.path.exists(guides_dir):
         for file in os.listdir(guides_dir):
