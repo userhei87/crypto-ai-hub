@@ -13,13 +13,13 @@ BINANCE_REF_URL = "https://binance.com"
 # =========================================================================
 # 1. Сюда вставляйте сырой текст новости, скопированный из любого СМИ
 RAW_NEWS_TEXT = """
-Anthropic Says IPO Roadshow With Expected Price Range of \$70-\$78 Per Share. 
-The AI giant Anthropic is planning to start its institutional marketing tour. 
-Analysts highlight massive enterprise demand for compute models and synergy with digital Web3 ecosystems.
+Deutsche Bank launches institutional crypto custody service for Bitcoin, Ethereum, and stablecoins on November 11, 2026. 
+The offering covers BTC, ETH, USDC, EURC, and EURAU, with the bank managing digital wallets and private keys via fintech infrastructure. 
+Paul Maley, Deutsche Bank's global head of trust and securities services, stated the bank aims to build a fully integrated regulated ecosystem supporting tokenization and digital asset settlement.
 """
 
 # 2. Укажите категорию (например: 🔥 Громкое событие, 📈 Тренды ИИ, ⚡ Важно)
-NEWS_CATEGORY = "📈 Тренды ИИ"
+NEWS_CATEGORY = "🔥 Громкое событие"
 # =========================================================================
 
 PROMPT = f"""
