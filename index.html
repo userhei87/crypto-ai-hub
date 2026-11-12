@@ -51,33 +51,31 @@
    </div>
   </section>
   
-  <!-- Блок живого графика BTC/USDT -->
+<!-- Блок живого графика BTC/USDT -->
 <section class="chart-section" style="padding: 20px 0 40px 0;">
     <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
         <h2 style="color: #fff; margin-bottom: 20px; font-size: 1.6rem; border-left: 4px solid #f3ba2f; padding-left: 15px;">
             Курс Bitcoin (BTC/USDT) в реальном времени
         </h2>
         
-        <div class="tradingview-widget-container" style="height: 450px; width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid #2b3139; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-            <div class="tradingview-widget-container__widget" style="height: 100%; width: 100%;"></div>
-            <script type="text/javascript" src="https://tradingview.com" async>
-            {
-                "autosize": true,
+        <div class="tradingview-widget-container" style="border-radius: 12px; overflow: hidden; border: 1px solid #2b3139; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+            <div id="tradingview_btc_chart" style="height: 450px; width: 100%;"></div>
+            <script type="text/javascript" src="https://tradingview.com"></script>
+            <script type="text/javascript">
+            new TradingView.widget({
+                "width": "100%",
+                "height": 450,
                 "symbol": "BINANCE:BTCUSDT",
                 "interval": "60",
                 "timezone": "Europe/Kiev",
                 "theme": "dark",
                 "style": "1",
                 "locale": "ru",
+                "toolbar_bg": "#1e2026",
                 "enable_publishing": false,
-                "backgroundColor": "#1e2026",
-                "gridColor": "rgba(43, 49, 57, 0.5)",
-                "hide_top_toolbar": false,
-                "hide_legend": false,
-                "save_image": false,
-                "calendar": false,
-                "support_host": "https://tradingview.com"
-            }
+                "allow_symbol_change": true,
+                "container_id": "tradingview_btc_chart"
+            });
             </script>
         </div>
     </div>
