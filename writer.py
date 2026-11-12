@@ -1,4 +1,5 @@
 import os
+import re
 import logging
 from ollama import Client
 
@@ -9,44 +10,95 @@ GUIDES_DIR = os.path.join(PROJECT_DIR, "guides")
 
 BINANCE_REF_URL = "https://www.binance.com/register?ref=SHARA10"
 
-# Конфигурация для Гайда №13
+# =========================================================================
+# КОНФИГУРАЦИЯ ДЛЯ НОВОГО ГАЙДА (МЕНЯЙТЕ ЭТИ ПАРАМЕТРЫ ПЕРЕД ЗАПУСКОМ)
+# =========================================================================
 TOPIC = "Психология криптотрейдинга и ИИ: Как победить FOMO и тильт с помощью алгоритмов"
 file_name = "crypto-trading-psychology.html"
 img_name = "crypto-trading-psychology.png"
+# =========================================================================
 
 PROMPT = f"""
 Ты профессиональный SEO-копирайтер и эксперт в Web3. 
 Напиши подробную, понятную пошаговую статью для новичков на тему: "{TOPIC}".
 Статья должна быть на русском языке.
 
-Используй строгие правила оформления:
-1. Выдавай ТОЛЬКО чистый текст статьи, БЕЗ каких-либо оберток ```html или приветствий от ИИ.
-2. Для структуры статьи используй стандартные HTML-теги:
+СТРОГИЕ ПРАВИЛА ОФОРМЛЕНИЯ (НАРУШЕНИЕ ЗАПРЕЩЕНО):
+1. ЗАПРЕЩЕНО использовать Markdown! Никаких звёздочек (**), решёток (#) или дефисов (-) для списков.
+2. Выдавай ТОЛЬКО чистый текст статьи, БЕЗ каких-либо оберток ```html или приветствий от ИИ.
+3. Обязательно используй стандартные HTML-теги для структуры текста:
    - <h2>Главные заголовки разделов</h2>
    - <h3>Подзаголовки шагов или подразделов</h3>
    - <p>Обычные абзацы текста</p>
    - <strong>Важные термины или предупреждения</strong>
    - <ul> и <li> для списков.
-3. ВАЖНО: Блок с готовым системным промптом или кодом ОБЯЗАТЕЛЬНО оберни в классические теги <pre><code>...</code></pre>. Внутри этих тегов должен быть ИСКЛЮЧИТЕЛЬНО чистый текст промпта без каких-либо внутренних HTML-тегов (никаких <h3>, <p> или <li> внутри кода быть не должно!).
-4. Опиши подробный чек-лист анализа мемкоинов (ликвидность, холдеры, проверка на скам/Rug Pull).
-5. Если в тексте статьи ты даешь ссылки на биржу Binance, ОБЯЗАТЕЛЬНО используй реферальный адрес {BINANCE_REF_URL} с атрибутами target="_blank" rel="noopener noreferrer". При упоминании биржи используй текст "официальный сайт Binance".
+4. Если приводишь пример системного промпта или кода, оберни его в <pre><code>...</code></pre>. Внутри этих тегов должен быть ИСКЛЮЧИТЕЛЬНО чистый текст без HTML-тегов.
+5. Пиши максимально доступно, пошагово, избегая сложного сленга. Упомяни важность использования локальных моделей (например, семейства Qwen через Ollama) для холодного анализа рынка.
+6. При упоминании биржи Binance используй ссылку: <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer">официальный сайт Binance</a>.
 """
+
+def clean_and_fix_html(raw_text):
+    """Автоматически чистит случайный Markdown от ИИ и оборачивает абзацы в HTML."""
+    # Убираем случайные обёртки кода
+    text = re.sub(r'^```html\s*|\s*```$', '', raw_text.strip(), flags=re.MULTILINE)
+    
+    # Заменяем **жирный текст** на <strong>жирный текст</strong>
+    text = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', text)
+    
+    lines = text.split('\n')
+    formatted_lines = []
+    in_list = False
+    in_pre = False
+    
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
+            continue
+            
+        # Не трогаем строки внутри блоков <pre><code>
+        if '<pre>' in stripped:
+            in_pre = True
+        if in_pre:
+            formatted_lines.append(line)
+            if '</pre>' in stripped:
+                in_pre = False
+            continue
+
+        # Превращаем строки с "- " в HTML-списки
+        if stripped.startswith('- '):
+            if not in_list:
+                formatted_lines.append('<ul>')
+                in_list = True
+            formatted_lines.append(f'<li>{stripped[2:]}</li>')
+        else:
+            if in_list:
+                formatted_lines.append('</ul>')
+                in_list = False
+            # Оборачиваем голый текст в <p>, если он не начинается с тега
+            if not stripped.startswith('<'):
+                formatted_lines.append(f'<p>{stripped}</p>')
+            else:
+                formatted_lines.append(stripped)
+                
+    if in_list:
+        formatted_lines.append('</ul>')
+        
+    return '\n'.join(formatted_lines)
 
 def generate_article():
     logging.info("🤖 Подключаюсь к локальной Ollama...")
-    logging.info("⏳ Видеокарта GTX 1070 начала генерацию текста для темы. Пожалуйста, подождите...")
+    logging.info(f"⏳ Видеокарта GTX 1070 начала генерацию текста для: {TOPIC}")
     
-    # Сначала безопасно создаем папку, если её нет
     if not os.path.exists(GUIDES_DIR):
         os.makedirs(GUIDES_DIR)
     
     try:
-        # Подключение и генерация текста
         client = Client()
         response = client.generate(model='qwen2.5-coder:7b', prompt=PROMPT)
-        article_content = response['response']
         
-        # Шаблон HTML-страницы
+        # Прогоняем ответ модели через наш фильтр-чистильщик
+        article_content = clean_and_fix_html(response['response'])
+        
         html_template = f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -60,7 +112,9 @@ def generate_article():
         <div class="container">
             <a href="../index.html" class="logo">Crypto<span>AI</span> Hub</a>
             <nav class="nav-links">
-                <a href="../index.html#guides-section" class="nav-link">На главную</a>
+                <a href="../index.html#guides-section" class="nav-link">Гайды</a>
+                <a href="../news.html" class="nav-link">Новости</a>
+                <a href="../disclaimer.html" class="nav-link">Дисклеймер</a>
                 <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
             </nav>
         </div>
@@ -98,12 +152,11 @@ def generate_article():
 </body>
 </html>"""
 
-        # Запись файла на диск
         file_path = os.path.join(GUIDES_DIR, file_name)
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(html_template)
             
-        logging.info(f"🎉 Гайд №1 успешно сгенерирован и сохранен в: guides/{file_name}")
+        logging.info(f"🎉 Гайд успешно сгенерирован, очищен от Markdown и сохранен в: guides/{file_name}")
 
     except Exception as e:
         logging.error(f"Произошла ошибка при работе скрипта: {e}")
