@@ -51,68 +51,18 @@
    </div>
   </section>
 
-<!-- Блок живого графика BTC/USDT (jsDelivr + API Binance) -->
+<!-- Блок живого графика BTC/USDT (CoinGecko) -->
 <section class="chart-section" style="padding: 20px 0 40px 0;">
     <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
-            <h2 style="color: #fff; margin: 0; font-size: 1.6rem; border-left: 4px solid #f3ba2f; padding-left: 15px;">
-                Курс Bitcoin (BTC/USDT) — Binance Live
-            </h2>
-            <div id="btc-live-price" style="color: #f3ba2f; font-size: 1.4rem; font-weight: bold;">Загрузка цены...</div>
-        </div>
+        <h2 style="color: #fff; margin-bottom: 20px; font-size: 1.6rem; border-left: 4px solid #f3ba2f; padding-left: 15px;">
+            Курс Bitcoin (BTC/USDT) в реальном времени
+        </h2>
         
-        <div id="binance-chart-container" style="height: 400px; width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid #2b3139; box-shadow: 0 4px 20px rgba(0,0,0,0.3); background: #1e2026;"></div>
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #2b3139; box-shadow: 0 4px 20px rgba(0,0,0,0.3); background: #1e2026; padding: 15px;">
+            <script src="https://coingecko.com"></script>
+            <gecko-coin-price-chart-widget locale="ru" dark-mode="true" outlined="false" coin-id="bitcoin" initial-currency="usd" height="350"></gecko-coin-price-chart-widget>
+        </div>
     </div>
-
-    <!-- Подключаем библиотеку с надежного CDN jsDelivr -->
-    <script src="https://jsdelivr.net"></script>
-    <script>
-        window.addEventListener("load", function() {
-            const container = document.getElementById('binance-chart-container');
-            const priceDisplay = document.getElementById('btc-live-price');
-
-            if (typeof LightweightCharts === 'undefined') {
-                priceDisplay.innerText = 'Ошибка загрузки библиотеки графиков';
-                return;
-            }
-
-            const chart = LightweightCharts.createChart(container, {
-                layout: { background: { color: '#1e2026' }, textColor: '#eaeaea' },
-                grid: { vertLines: { color: '#2b3139' }, horzLines: { color: '#2b3139' } },
-                timeScale: { timeVisible: true, secondsVisible: false }
-            });
-
-            const candleSeries = chart.addCandlestickSeries({
-                upColor: '#0ecb81', downColor: '#f6465d',
-                borderDownColor: '#f6465d', borderUpColor: '#0ecb81',
-                wickDownColor: '#f6465d', wickUpColor: '#0ecb81',
-            });
-
-            // Загружаем свечи с публичного API Binance с правильными индексами
-            fetch('https://binance.com')
-                .then(res => res.json())
-                .then(data => {
-                    const candles = data.map(d => ({
-                        time: d[0] / 1000,
-                        open: parseFloat(d[1]),
-                        high: parseFloat(d[2]),
-                        low: parseFloat(d[3]),
-                        close: parseFloat(d[4])
-                    }));
-                    candleSeries.setData(candles);
-                    const lastPrice = candles[candles.length - 1].close;
-                    priceDisplay.innerText = '$' + lastPrice.toLocaleString('en-US', { minimumFractionDigits: 2 });
-                })
-                .catch(err => {
-                    priceDisplay.innerText = 'API Binance недоступен';
-                    console.error(err);
-                });
-
-            window.addEventListener('resize', () => {
-                chart.applyOptions({ width: container.clientWidth });
-            });
-        });
-    </script>
 </section>
   
   <!-- Сетка с гайдами -->
