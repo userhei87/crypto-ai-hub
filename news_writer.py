@@ -11,12 +11,14 @@ BINANCE_REF_URL = "https://binance.com"
 # =========================================================================
 # ПОДГОТОВКА И КОНФИГУРАЦИЯ НОВОСТИ (МЕНЯЙТЕ ЭТИ ПАРАМЕТРЫ ПЕРЕД ЗАПУСКОМ)
 # =========================================================================
-# 1. Сюда вставляйте сырой текст новости, скопированный из любого СМИ
 RAW_NEWS_TEXT = """
-Deutsche Bank launches institutional crypto custody service for Bitcoin, Ethereum, and stablecoins on November 11, 2026. 
-The offering covers BTC, ETH, USDC, EURC, and EURAU, with the bank managing digital wallets and private keys via fintech infrastructure. 
-Paul Maley, Deutsche Bank's global head of trust and securities services, stated the bank aims to build a fully integrated regulated ecosystem supporting tokenization and digital asset settlement.
+On November 12, 2026, ARK Invest analyst Lorenzo Valente highlighted that cumulative crypto hack losses have reached $26.9 billion against $47 billion in on-chain revenue, meaning 57 cents are stolen for every dollar earned. 
+Simultaneously, cybersecurity experts warn of a sharp rise in hackers using Artificial Intelligence tools to discover and exploit vulnerabilities in Web3 protocols and exchanges. 
+Analysts emphasize the critical need for strict wallet security, hardware storage, and AI-assisted smart contract auditing.
 """
+
+NEWS_CATEGORY = "🛡️ Безопасность & ИИ"
+# =========================================================================
 
 # 2. Укажите категорию (например: 🔥 Громкое событие, 📈 Тренды ИИ, ⚡ Важно)
 NEWS_CATEGORY = "🔥 Громкое событие"

@@ -9,10 +9,10 @@ GUIDES_DIR = os.path.join(PROJECT_DIR, "guides")
 
 BINANCE_REF_URL = "https://www.binance.com/register?ref=SHARA10"
 
-# Конфигурация для Гайда №12 (Ноябрь 2026)
-TOPIC = "Аналитика мемкоинов с помощью ИИ: Как искать гем-токены в 2026 году"
-file_name = "ai-memecoin-analysis.html"
-img_name = "ai-memecoin-thumb.png"  
+# Конфигурация для Гайда №13
+TOPIC = "Психология криптотрейдинга и ИИ: Как победить FOMO и тильт с помощью алгоритмов"
+file_name = "crypto-trading-psychology.html"
+img_name = "crypto-trading-psychology.png"
 
 PROMPT = f"""
 Ты профессиональный SEO-копирайтер и эксперт в Web3. 
