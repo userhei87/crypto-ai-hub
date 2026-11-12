@@ -51,19 +51,47 @@
    </div>
   </section>
 
-<!-- Блок живого графика BTC/USDT (CoinGecko) -->
-<section class="chart-section" style="padding: 20px 0 40px 0;">
+<!-- Живой график Bitcoin от CoinGecko -->
+<section class="chart-section" style="padding: 20px 0 40px;">
     <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
-        <h2 style="color: #fff; margin-bottom: 20px; font-size: 1.6rem; border-left: 4px solid #f3ba2f; padding-left: 15px;">
-            Курс Bitcoin (BTC/USDT) в реальном времени
+
+        <h2 style="
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            border-left: 4px solid #f3ba2f;
+            padding-left: 15px;
+        ">
+            Курс Bitcoin (BTC/USD) в реальном времени
         </h2>
-        
-        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #2b3139; box-shadow: 0 4px 20px rgba(0,0,0,0.3); background: #1e2026; padding: 15px;">
-            <script src="https://coingecko.com"></script>
-            <gecko-coin-price-chart-widget locale="ru" dark-mode="true" outlined="false" coin-id="bitcoin" initial-currency="usd" height="350"></gecko-coin-price-chart-widget>
+
+        <div style="
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2b3139;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            background: #1e2026;
+            padding: 10px;
+        ">
+
+            <gecko-coin-price-chart-widget
+                locale="ru"
+                dark-mode="true"
+                coin-id="bitcoin"
+                initial-currency="usd"
+                width="0"
+                height="350">
+            </gecko-coin-price-chart-widget>
+
         </div>
     </div>
 </section>
+
+<!-- Официальный скрипт CoinGecko -->
+<script
+    src="https://widgets.coingecko.com/gecko-coin-price-chart-widget.js"
+    async>
+</script>
   
   <!-- Сетка с гайдами -->
   <main class="guides-section" id="guides-section">
