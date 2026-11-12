@@ -51,23 +51,62 @@
    </div>
   </section>
   
-<!-- Блок живого графика BTC/USDT (Прямой iframe) -->
+<!-- Блок живого графика BTC/USDT (Прямой API Binance + Lightweight Charts) -->
 <section class="chart-section" style="padding: 20px 0 40px 0;">
     <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
-        <h2 style="color: #fff; margin-bottom: 20px; font-size: 1.6rem; border-left: 4px solid #f3ba2f; padding-left: 15px;">
-            Курс Bitcoin (BTC/USDT) в реальном времени
-        </h2>
-        
-        <div style="height: 450px; width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid #2b3139; box-shadow: 0 4px 20px rgba(0,0,0,0.3); background: #1e2026;">
-            <iframe 
-                src="https://tradingview.com" 
-                style="width: 100%; height: 100%; border: none; display: block;" 
-                allowtransparency="true" 
-                scrolling="no" 
-                allowfullscreen>
-            </iframe>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+            <h2 style="color: #fff; margin: 0; font-size: 1.6rem; border-left: 4px solid #f3ba2f; padding-left: 15px;">
+                Курс Bitcoin (BTC/USDT) — Binance Live
+            </h2>
+            <div id="btc-live-price" style="color: #f3ba2f; font-size: 1.4rem; font-weight: bold;">Загрузка цены...</div>
         </div>
+        
+        <div id="binance-chart-container" style="height: 400px; width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid #2b3139; box-shadow: 0 4px 20px rgba(0,0,0,0.3); background: #1e2026;"></div>
     </div>
+
+    <script src="https://unpkg.com"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.getElementById('binance-chart-container');
+            const priceDisplay = document.getElementById('btc-live-price');
+
+            const chart = LightweightCharts.createChart(container, {
+                layout: { background: { color: '#1e2026' }, textColor: '#eaeaea' },
+                grid: { vertLines: { color: '#2b3139' }, horzLines: { color: '#2b3139' } },
+                timeScale: { timeVisible: true, secondsVisible: false }
+            });
+
+            const candleSeries = chart.addCandlestickSeries({
+                upColor: '#0ecb81', downColor: '#f6465d',
+                borderDownColor: '#f6465d', borderUpColor: '#0ecb81',
+                wickDownColor: '#f6465d', wickUpColor: '#0ecb81',
+            });
+
+            // Загружаем свечи напрямую с публичного API Binance
+            fetch('https://binance.com')
+                .then(res => res.json())
+                .then(data => {
+                    const candles = data.map(d => ({
+                        time: d[0] / 1000,
+                        open: parseFloat(d[1]),
+                        high: parseFloat(d[2]),
+                        low: parseFloat(d[3]),
+                        close: parseFloat(d[4])
+                    }));
+                    candleSeries.setData(candles);
+                    const lastPrice = candles[candles.length - 1].close;
+                    priceDisplay.innerText = '$' + lastPrice.toLocaleString('en-US', { minimumFractionDigits: 2 });
+                })
+                .catch(err => {
+                    priceDisplay.innerText = 'API временно недоступен';
+                    console.error(err);
+                });
+
+            window.addEventListener('resize', () => {
+                chart.applyOptions({ width: container.clientWidth });
+            });
+        });
+    </script>
 </section>
 
   <!-- Сетка с гайдами -->
