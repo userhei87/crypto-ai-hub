@@ -50,8 +50,8 @@
     </a>
    </div>
   </section>
-  
-<!-- Блок живого графика BTC/USDT (Прямой API Binance + Lightweight Charts) -->
+
+<!-- Блок живого графика BTC/USDT (jsDelivr + API Binance) -->
 <section class="chart-section" style="padding: 20px 0 40px 0;">
     <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
@@ -64,11 +64,17 @@
         <div id="binance-chart-container" style="height: 400px; width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid #2b3139; box-shadow: 0 4px 20px rgba(0,0,0,0.3); background: #1e2026;"></div>
     </div>
 
-    <script src="https://unpkg.com"></script>
+    <!-- Подключаем библиотеку с надежного CDN jsDelivr -->
+    <script src="https://jsdelivr.net"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        window.addEventListener("load", function() {
             const container = document.getElementById('binance-chart-container');
             const priceDisplay = document.getElementById('btc-live-price');
+
+            if (typeof LightweightCharts === 'undefined') {
+                priceDisplay.innerText = 'Ошибка загрузки библиотеки графиков';
+                return;
+            }
 
             const chart = LightweightCharts.createChart(container, {
                 layout: { background: { color: '#1e2026' }, textColor: '#eaeaea' },
@@ -82,7 +88,7 @@
                 wickDownColor: '#f6465d', wickUpColor: '#0ecb81',
             });
 
-            // Загружаем свечи напрямую с публичного API Binance
+            // Загружаем свечи с публичного API Binance с правильными индексами
             fetch('https://binance.com')
                 .then(res => res.json())
                 .then(data => {
@@ -98,7 +104,7 @@
                     priceDisplay.innerText = '$' + lastPrice.toLocaleString('en-US', { minimumFractionDigits: 2 });
                 })
                 .catch(err => {
-                    priceDisplay.innerText = 'API временно недоступен';
+                    priceDisplay.innerText = 'API Binance недоступен';
                     console.error(err);
                 });
 
@@ -108,7 +114,7 @@
         });
     </script>
 </section>
-
+  
   <!-- Сетка с гайдами -->
   <main class="guides-section" id="guides-section">
    <div class="container">
