@@ -156,8 +156,10 @@ def build_article_html(topic, img_name, article_content):
         <div class="container">
             <a href="../index.html" class="logo">Crypto<span>AI</span> Hub</a>
             <nav class="nav-links">
-                <a href="../index.html#guides-section" class="nav-link">На главную</a>
-                <a href="../disclaimer.html" class="nav-link">Дисклеймер</a> 
+                <a href="../index.html" class="nav-link">Главная</a>
+                <a href="../index.html#guides-section" class="nav-link">Гайды</a>
+                <a href="../news.html" class="nav-link">Новости</a>
+                <a href="../disclaimer.html" class="nav-link">Дисклеймер</a>
                 <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
             </nav>
         </div>
