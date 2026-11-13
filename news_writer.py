@@ -9,15 +9,14 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 BINANCE_REF_URL = "https://binance.com"
 
 # =========================================================================
-# ПОДГОТОВКА И КОНФИГУРАЦИЯ НОВОСТИ (МЕНЯЙТЕ ЭТИ ПАРАМЕТРЫ ПЕРЕД ЗАПУСКОМ)
+# ПОДГОТОВКА И КОНФИГУРАЦИЯ НОВОСТИ
 # =========================================================================
 RAW_NEWS_TEXT = """
-On November 12, 2026, ARK Invest analyst Lorenzo Valente highlighted that cumulative crypto hack losses have reached $26.9 billion against $47 billion in on-chain revenue, meaning 57 cents are stolen for every dollar earned. 
-Simultaneously, cybersecurity experts warn of a sharp rise in hackers using Artificial Intelligence tools to discover and exploit vulnerabilities in Web3 protocols and exchanges. 
-Analysts emphasize the critical need for strict wallet security, hardware storage, and AI-assisted smart contract auditing.
+On November 13, 2026, the U.S. Justice Department and FBI announced they disrupted a massive $400 million North Korean crypto scam network that used AI-generated deepfakes and fake video meetings to steal digital assets over 18 months. 
+Authorities seized cloud servers used by the hackers to impersonate executives and trick victims into transferring funds or exposing private keys. 
+Security experts warn that AI-powered social engineering is becoming the primary threat in Web3 during market volatility, urging users to verify contacts strictly and store assets safely.
 """
-
-NEWS_CATEGORY = "🛡️ Безопасность & ИИ"
+NEWS_CATEGORY = "🚨 ИИ & Безопасность"
 # =========================================================================
 
 # 2. Укажите категорию (например: 🔥 Громкое событие, 📈 Тренды ИИ, ⚡ Важно)
