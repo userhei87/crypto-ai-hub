@@ -6,17 +6,17 @@ from ollama import Client
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%H:%M:%S')
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-BINANCE_REF_URL = "https://binance.com"
+BINANCE_REF_URL = "https://www.binance.com/register?ref=SHARA10"
 
 # =========================================================================
 # ПОДГОТОВКА И КОНФИГУРАЦИЯ НОВОСТИ
 # =========================================================================
 RAW_NEWS_TEXT = """
-On November 13, 2026, the U.S. Justice Department and FBI announced they disrupted a massive $400 million North Korean crypto scam network that used AI-generated deepfakes and fake video meetings to steal digital assets over 18 months. 
-Authorities seized cloud servers used by the hackers to impersonate executives and trick victims into transferring funds or exposing private keys. 
-Security experts warn that AI-powered social engineering is becoming the primary threat in Web3 during market volatility, urging users to verify contacts strictly and store assets safely.
+On November 15, 2026, Bitcoin fell below $65,000, hitting its lowest level since July near $62,000–$64,962 amid macroeconomic pressure and investors pulling capital out of crypto to favor Artificial Intelligence stocks. 
+US spot Bitcoin ETFs recorded nearly $3 billion in net outflows over the past two weeks, while total stablecoin supply shrank by $17 billion in a month. 
+Altcoins also suffered heavy losses: Ethereum dropped under $1,800, XRP fell below $1 to 89 cents, and Solana dipped to $67.37 right as the Breakpoint conference opened in London. Analysts emphasize strict risk management and avoiding high-leverage FOMO during market capitulation.
 """
-NEWS_CATEGORY = "🚨 ИИ & Безопасность"
+NEWS_CATEGORY = "📉 Рынок & ИИ"
 # =========================================================================
 
 # 2. Укажите категорию (например: 🔥 Громкое событие, 📈 Тренды ИИ, ⚡ Важно)
