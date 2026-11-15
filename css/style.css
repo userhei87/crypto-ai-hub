@@ -91,7 +91,8 @@ body {
 .hero {
     padding: 80px 0;
     text-align: center;
-    background: linear-gradient(rgba(11, 14, 17, 0.78), rgba(11, 14, 17, 0.88)), url('../hero-bg.png') center/cover no-repeat;
+    /* Снизили затемнение с 80% до 40%, чтобы фон стал ярким */
+    background: linear-gradient(rgba(11, 14, 17, 0.35), rgba(11, 14, 17, 0.50)), url('../hero-bg.png') center/cover no-repeat;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -99,13 +100,17 @@ body {
     font-size: 3rem;
     margin-bottom: 20px;
     font-weight: 800;
+    /* Тень под заголовком для чёткости на ярком фоне */
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
 }
 
 .hero p {
-    color: var(--text-muted);
+    color: #eaeaea;
     font-size: 1.2rem;
     max-width: 700px;
     margin: 0 auto 30px;
+    /* Тень под описанием */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .btn-main {
