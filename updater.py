@@ -159,7 +159,7 @@ def build_article_html(topic, img_name, article_content):
                 <a href="../index.html" class="nav-link">Главная</a>
                 <a href="../index.html#guides-section" class="nav-link">Гайды</a>
                 <a href="../news.html" class="nav-link">Новости</a>
-                <a href="../partners.html">Заработок без вложений</a>
+                <a href="../partners.html" class="nav-link">Заработок без вложений</a>
                 <a href="../disclaimer.html" class="nav-link">Дисклеймер</a>
                 <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
             </nav>
@@ -290,6 +290,37 @@ def rebuild_index_grid():
         except Exception as error:
             logging.exception(f"Ошибка при работе с index.html: {error}")
 
+def sync_root_navbars():
+    logging.info("🧭 Синхронизация верхнего меню в корневых файлах...")
+    root_files = ["index.html", "news.html", "partners.html", "disclaimer.html"]
+    
+    for filename in root_files:
+        filepath = os.path.join(PROJECT_DIR, filename)
+        if not os.path.exists(filepath):
+            continue
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                soup = BeautifulSoup(f.read(), "html.parser")
+            
+            nav = soup.find("nav", class_="nav-links")
+            if nav:
+                active_cls = " active" if filename == "partners.html" else ""
+                nav.clear()
+                nav_html = f"""
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="index.html#guides-section" class="nav-link">Гайды</a>
+                    <a href="news.html" class="nav-link">Новости</a>
+                    <a href="partners.html" class="nav-link{active_cls}">Заработок без вложений</a>
+                    <a href="disclaimer.html" class="nav-link">Дисклеймер</a>
+                    <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
+                """
+                nav.append(BeautifulSoup(nav_html, "html.parser"))
+                
+                with open(filepath, "w", encoding="utf-8") as f:
+                    f.write(str(soup))
+                logging.info(f"✅ Меню обновлено в {filename}")
+        except Exception as e:
+            logging.error(f"Ошибка при обновлении меню в {filename}: {e}")
 
 def main():
         logging.info("=" * 55)
@@ -297,6 +328,7 @@ def main():
         logging.info("=" * 55)
         update_all_guides()
         rebuild_index_grid()
+        sync_root_navbars()
         logging.info("=" * 55)
 
 
