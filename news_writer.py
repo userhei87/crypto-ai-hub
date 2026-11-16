@@ -12,11 +12,11 @@ BINANCE_REF_URL = "https://www.binance.com/register?ref=SHARA10"
 # ПОДГОТОВКА И КОНФИГУРАЦИЯ НОВОСТИ
 # =========================================================================
 RAW_NEWS_TEXT = """
-On November 15, 2026, Bitcoin fell below $65,000, hitting its lowest level since July near $62,000–$64,962 amid macroeconomic pressure and investors pulling capital out of crypto to favor Artificial Intelligence stocks. 
-US spot Bitcoin ETFs recorded nearly $3 billion in net outflows over the past two weeks, while total stablecoin supply shrank by $17 billion in a month. 
-Altcoins also suffered heavy losses: Ethereum dropped under $1,800, XRP fell below $1 to 89 cents, and Solana dipped to $67.37 right as the Breakpoint conference opened in London. Analysts emphasize strict risk management and avoiding high-leverage FOMO during market capitulation.
+On November 16, 2026, reports revealed the Trump administration plans to designate over two dozen AI companies—including Nvidia, OpenAI, Anthropic, Microsoft, and Amazon—as "national champions" to support global expansion amid a sharp sell-off in AI stocks and semiconductor ETFs. 
+At the same time, the crypto market started the week near three-month lows, with Bitcoin trading around $64,400–$64,700, Ethereum near $1,808, and the Fear & Greed Index dropping to 13 points (extreme fear). 
+On Deribit, the biggest options bet shifted from $100,000 calls to $60,000 puts with $900M in open interest, reflecting heightened hedging as macro uncertainty and AI sector volatility weigh on risk assets.
 """
-NEWS_CATEGORY = "📉 Рынок & ИИ"
+NEWS_CATEGORY = "⚡ ИИ & Макрорынок"
 # =========================================================================
 
 # 2. Укажите категорию (например: 🔥 Громкое событие, 📈 Тренды ИИ, ⚡ Важно)
