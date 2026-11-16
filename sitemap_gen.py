@@ -29,8 +29,26 @@ def generate_sitemap():
         xml_content += f"    <priority>0.9</priority>\n"
         xml_content += f"  </url>\n"
         print(" -> Добавлен в карту: news.html")
+        
+    # 3. [НОВОЕ] Добавляем страницу заработка без вложений
+    if os.path.exists("partners.html"):
+        xml_content += f"  <url>\n"
+        xml_content += f"    <loc>{BASE_URL}/partners.html</loc>\n"
+        xml_content += f"    <lastmod>{current_date}</lastmod>\n"
+        xml_content += f"    <priority>0.9</priority>\n"
+        xml_content += f"  </url>\n"
+        print(" -> Добавлен в карту: partners.html")  
+        
+    # 5. Добавляем страницу дисклеймера
+    if os.path.exists("disclaimer.html"):
+        xml_content += f"  <url>\n"
+        xml_content += f"    <loc>{BASE_URL}/disclaimer.html</loc>\n"
+        xml_content += f"    <lastmod>{current_date}</lastmod>\n"
+        xml_content += f"    <priority>0.5</priority>\n"
+        xml_content += f"  </url>\n"
+        print(" -> Добавлен в карту: disclaimer.html")    
 
-    # 3. Сканируем папку guides/
+    # 6. Сканируем папку guides/
     guides_dir = "guides"
     if os.path.exists(guides_dir):
         for file in os.listdir(guides_dir):
