@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://userhei87.github.io/crypto-ai-hub/sitemap.xml
+Sitemap: https://crypto-ai-hub.com

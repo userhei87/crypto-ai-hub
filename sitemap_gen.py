@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 
 # НАСТРОЙКА: Замените 'ВАШ_НИКНЕЙМ' на ваш логин на GitHub после регистрации
-BASE_URL = "https://userhei87.github.io/crypto-ai-hub" 
+BASE_URL = "https://crypto-ai-hub.com" 
 
 def generate_sitemap():
     print("🤖 Запуск генерации sitemap.xml...")
