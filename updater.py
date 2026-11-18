@@ -157,6 +157,8 @@ def build_article_html(topic, img_name, article_content):
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{safe_topic} — CryptoAI Hub</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <meta name="theme-color" content="#1e2026">
 </head>
 <body>
     <header class="navbar">
@@ -323,9 +325,22 @@ def sync_root_navbars():
                 """
                 nav.append(BeautifulSoup(nav_html, "html.parser"))
                 
-                with open(filepath, "w", encoding="utf-8") as f:
-                    f.write(str(soup))
-                logging.info(f"✅ Меню обновлено в {filename}")
+            # --- БЛОК ОБНОВЛЕНИЯ ФАВИКОНА И ТЕМЫ ---    
+            head = soup.find("head")
+            if head:
+                for old_icon in head.find_all("link", rel=lambda r: r and "icon" in r):
+                    old_icon.decompose()
+                new_icon = soup.new_tag("link", rel="icon", type="image/png", href="images/favicon.png")
+                head.append(new_icon)
+                
+                if not head.find("meta", attrs={"name": "theme-color"}):
+                    theme_meta = soup.new_tag("meta", attrs={"name": "theme-color", "content": "#1e2026"})
+                    head.append(theme_meta)    
+            # --------------------------------------
+            
+            with open(filepath, "w", encoding="utf-8") as f:
+                f.write(str(soup))
+            logging.info(f"✅ Меню обновлено в {filename}")
         except Exception as e:
             logging.error(f"Ошибка при обновлении меню в {filename}: {e}")
 
