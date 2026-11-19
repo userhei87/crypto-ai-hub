@@ -1,5 +1,6 @@
 import os
 import re
+import random
 import logging
 import shutil
 from html import escape
@@ -145,11 +146,38 @@ def extract_clean_content(file_path):
             logging.error(f"Ошибка чтения {path}: {e}")
     return None
 
+def get_related_guides_html(current_file):
+    other_files = [f for f in GUIDES_DATA.keys() if f != current_file]
+    selected = random.sample(other_files, min(3, len(other_files)))
+    
+    cards_html = ""
+    for f_name in selected:
+        t_topic, t_img, t_badge, _ = GUIDES_DATA[f_name]
+        cards_html += f"""
+        <a href="{f_name}" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s;">
+            <img src="{escape(t_img, quote=True)}" alt="{escape(t_topic, quote=True)}" style="width: 100%; height: 130px; object-fit: cover;">
+            <div style="padding: 15px;">
+                <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">{escape(t_badge)}</span>
+                <h4 style="color: #fff; margin: 8px 0 0 0; font-size: 0.95rem; line-height: 1.4;">{escape(t_topic)}</h4>
+            </div>
+        </a>
+        """
+        
+    return f"""
+    <section class="related-guides" style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #2b3139;">
+        <h3 style="color: #fff; margin: 0 0 20px 0; font-size: 1.4rem; border-left: 4px solid #f3ba2f; padding-left: 12px;">Читайте также по теме</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
+            {cards_html}
+        </div>
+    </section>
+    """
+
 def build_article_html(file_name, topic, img_name, desc, article_content):
     safe_topic = escape(topic)
     safe_image = escape(img_name, quote=True)
     safe_desc = escape(desc, quote=True)
     clean_text = fix_article_links(article_content)
+    related_block = get_related_guides_html(file_name)
     page_url = f"https://crypto-ai-hub.com/guides/{file_name}"
     og_image_url = f"https://crypto-ai-hub.com/guides/{safe_image}"
 
@@ -235,6 +263,8 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
                 <p style="color: #b7bdc6; margin: 0 0 20px 0; font-size: 1rem;">Откройте аккаунт сегодня, зафиксируйте за собой сниженные комиссии и начните собирать свой первый криптопортфель с поддержкой искусственного интеллекта.</p>
                 <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref" style="display: inline-block; padding: 12px 30px; font-size: 1rem; text-decoration: none; background-color: #00f2fe; color: #0b0e11;">Зарегистрироваться на Binance со скидкой 10%</a>
             </div>
+            
+            {related_block}
 
         </div>
     </main>
