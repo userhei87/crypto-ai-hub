@@ -160,7 +160,7 @@ def get_related_guides_html(current_file):
     for f_name in selected:
         t_topic, t_img, t_badge, _ = GUIDES_DATA[f_name]
         cards_html += f"""
-        <a href="{f_name}" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s;">
+        <a href="{f_name}" class="related-card" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
             <img src="{escape(t_img, quote=True)}" alt="{escape(t_topic, quote=True)}" style="width: 100%; height: 130px; object-fit: cover;">
             <div style="padding: 15px;">
                 <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">{escape(t_badge)}</span>
