@@ -229,14 +229,16 @@ body {
     font-size: 0.8rem;
 }
 
-/* Общие стили для ссылок внутри контента статей */
-.article-text a, .article-text a:visited {
+/* Общие стили для ссылок внутри контента статей и новостей */
+.article-text a, .article-text a:visited,
+.news-body-content a, .news-body-content a:visited {
     color: #00f2fe !important; /* Насыщенный бирюзовый цвет для обычных и посещенных ссылок */
     text-decoration: underline;
     transition: color 0.2s;
 }
 
-.article-text a:hover {
+.article-text a:hover,
+.news-body-content a:hover {
     color: #4facfe !important; /* Смена оттенка при наведении */
 }
 
