@@ -203,7 +203,8 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
     <meta property="og:image" content="{og_image_url}">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/favicon.png">
     <meta name="theme-color" content="#1e2026">
     <script type="application/ld+json">
     {{
@@ -405,10 +406,10 @@ def sync_root_navbars():
                 
             head = soup.find("head")
             if head:
-                for old_icon in head.find_all("link", rel=lambda r: r and "icon" in r):
+                for old_icon in head.find_all("link", rel=lambda r: r and ("icon" in r or "apple-touch-icon" in r)):
                     old_icon.decompose()
-                new_icon = soup.new_tag("link", rel="icon", type="image/png", href="images/favicon.png")
-                head.append(new_icon)
+                head.append(soup.new_tag("link", rel="icon", type="image/png", sizes="144x144", href="/images/favicon.png"))
+                head.append(soup.new_tag("link", rel="apple-touch-icon", href="/images/favicon.png"))
                 
                 if not head.find("meta", attrs={"name": "theme-color"}):
                     theme_meta = soup.new_tag("meta", attrs={"name": "theme-color", "content": "#1e2026"})
