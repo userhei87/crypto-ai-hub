@@ -145,10 +145,13 @@ def extract_clean_content(file_path):
             logging.error(f"Ошибка чтения {path}: {e}")
     return None
 
-def build_article_html(topic, img_name, article_content):
+def build_article_html(file_name, topic, img_name, desc, article_content):
     safe_topic = escape(topic)
     safe_image = escape(img_name, quote=True)
+    safe_desc = escape(desc, quote=True)
     clean_text = fix_article_links(article_content)
+    page_url = f"https://crypto-ai-hub.com/guides/{file_name}"
+    og_image_url = f"https://crypto-ai-hub.com/guides/{safe_image}"
 
     return f"""<!DOCTYPE html>
 <html lang="ru">
@@ -156,17 +159,52 @@ def build_article_html(topic, img_name, article_content):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{safe_topic} — CryptoAI Hub</title>
+    <meta name="description" content="{safe_desc}">
+    <link rel="canonical" href="{page_url}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CryptoAI Hub">
+    <meta property="og:title" content="{safe_topic} — CryptoAI Hub">
+    <meta property="og:description" content="{safe_desc}">
+    <meta property="og:url" content="{page_url}">
+    <meta property="og:image" content="{og_image_url}">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/png" href="../images/favicon.png">
     <meta name="theme-color" content="#1e2026">
+    <script type="application/ld+json">
+    {{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{safe_topic}",
+      "description": "{safe_desc}",
+      "image": "{og_image_url}",
+      "author": {{
+        "@type": "Organization",
+        "name": "CryptoAI Hub",
+        "url": "https://crypto-ai-hub.com/"
+      }},
+      "publisher": {{
+        "@type": "Organization",
+        "name": "CryptoAI Hub",
+        "logo": {{
+          "@type": "ImageObject",
+          "url": "https://crypto-ai-hub.com/images/favicon.png"
+        }}
+      }},
+      "mainEntityOfPage": {{
+        "@type": "WebPage",
+        "@id": "{page_url}"
+      }}
+    }}
+    </script>
 </head>
 <body>
     <header class="navbar">
         <div class="container">
-            <a href="../index.html" class="logo">Crypto<span>AI</span> Hub</a>
+            <a href="/" class="logo">Crypto<span>AI</span> Hub</a>
             <nav class="nav-links">
-                <a href="../index.html" class="nav-link">Главная</a>
-                <a href="../index.html#guides-section" class="nav-link">Гайды</a>
+                <a href="/" class="nav-link">Главная</a>
+                <a href="/#guides-section" class="nav-link">Гайды</a>
                 <a href="../news.html" class="nav-link">Новости</a>
                 <a href="../partners.html" class="nav-link">Заработок без вложений</a>
                 <a href="../disclaimer.html" class="nav-link">Дисклеймер</a>
@@ -214,7 +252,7 @@ def update_all_guides():
         return
 
     for file_name, data in GUIDES_DATA.items():
-        topic, img_name = data[0], data[1]
+        topic, img_name, desc = data[0], data[1], data[3]
         file_path = os.path.join(GUIDES_DIR, file_name)
         
         article_content = extract_clean_content(file_path)
@@ -224,7 +262,7 @@ def update_all_guides():
 
         try:
             create_backup(file_path)
-            new_html = build_article_html(topic, img_name, article_content)
+            new_html = build_article_html(file_name, topic, img_name, desc, article_content)
             with open(file_path, "w", encoding="utf-8") as f:
                 f.write(new_html)
             logging.info(f"✅ Статья обновлена: {file_name}")
@@ -300,7 +338,7 @@ def rebuild_index_grid():
             logging.exception(f"Ошибка при работе с index.html: {error}")
 
 def sync_root_navbars():
-    logging.info("🧭 Синхронизация верхнего меню в корневых файлах...")
+    logging.info("🧭 Синхронизация верхнего меню и SEO-тегов в корневых файлах...")
     root_files = ["index.html", "news.html", "partners.html", "disclaimer.html"]
     
     for filename in root_files:
@@ -310,14 +348,18 @@ def sync_root_navbars():
         try:
             with open(filepath, "r", encoding="utf-8") as f:
                 soup = BeautifulSoup(f.read(), "html.parser")
-            
+
+            logo = soup.find("a", class_="logo")
+            if logo:
+                logo["href"] = "/"
+
             nav = soup.find("nav", class_="nav-links")
             if nav:
                 active_cls = " active" if filename == "partners.html" else ""
                 nav.clear()
                 nav_html = f"""
-                    <a href="index.html" class="nav-link">Главная</a>
-                    <a href="index.html#guides-section" class="nav-link">Гайды</a>
+                    <a href="/" class="nav-link">Главная</a>
+                    <a href="/#guides-section" class="nav-link">Гайды</a>
                     <a href="news.html" class="nav-link">Новости</a>
                     <a href="partners.html" class="nav-link{active_cls}">Заработок без вложений</a>
                     <a href="disclaimer.html" class="nav-link">Дисклеймер</a>
@@ -325,7 +367,6 @@ def sync_root_navbars():
                 """
                 nav.append(BeautifulSoup(nav_html, "html.parser"))
                 
-            # --- БЛОК ОБНОВЛЕНИЯ ФАВИКОНА И ТЕМЫ ---    
             head = soup.find("head")
             if head:
                 for old_icon in head.find_all("link", rel=lambda r: r and "icon" in r):
@@ -335,14 +376,23 @@ def sync_root_navbars():
                 
                 if not head.find("meta", attrs={"name": "theme-color"}):
                     theme_meta = soup.new_tag("meta", attrs={"name": "theme-color", "content": "#1e2026"})
-                    head.append(theme_meta)    
-            # --------------------------------------
+                    head.append(theme_meta)
+
+                for old_can in head.find_all("link", rel="canonical"):
+                    old_can.decompose()
+                clean_url = "https://crypto-ai-hub.com/" if filename == "index.html" else f"https://crypto-ai-hub.com/{filename}"
+                head.append(soup.new_tag("link", rel="canonical", href=clean_url))
+
+                if filename == "index.html" and not head.find("script", id="clean-url-script"):
+                    clean_script = soup.new_tag("script", id="clean-url-script")
+                    clean_script.string = "if (window.location.pathname.endsWith('/index.html')) { window.history.replaceState(null, '', '/'); }"
+                    head.append(clean_script)
             
             with open(filepath, "w", encoding="utf-8") as f:
                 f.write(str(soup))
-            logging.info(f"✅ Меню обновлено в {filename}")
+            logging.info(f"✅ Меню и чистые URL обновлены в {filename}")
         except Exception as e:
-            logging.error(f"Ошибка при обновлении меню в {filename}: {e}")
+            logging.error(f"Ошибка при обновлении {filename}: {e}")
 
 def main():
         logging.info("=" * 55)

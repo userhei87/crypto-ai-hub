@@ -15,7 +15,7 @@ def generate_sitemap():
     # 1. Добавляем главную страницу
     if os.path.exists("index.html"):
         xml_content += f"  <url>\n"
-        xml_content += f"    <loc>{BASE_URL}/index.html</loc>\n"
+        xml_content += f"    <loc>{BASE_URL}/</loc>\n"
         xml_content += f"    <lastmod>{current_date}</lastmod>\n"
         xml_content += f"    <priority>1.0</priority>\n"
         xml_content += f"  </url>\n"
