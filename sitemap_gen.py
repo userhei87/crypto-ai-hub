@@ -37,8 +37,17 @@ def generate_sitemap():
         xml_content += f"    <lastmod>{current_date}</lastmod>\n"
         xml_content += f"    <priority>0.9</priority>\n"
         xml_content += f"  </url>\n"
-        print(" -> Добавлен в карту: partners.html")  
+        print(" -> Добавлен в карту: partners.html") 
         
+    # 4. Добавляем библиотеку промптов
+    if os.path.exists("prompts.html"):
+        xml_content += f"  <url>\n"
+        xml_content += f"    <loc>{BASE_URL}/prompts.html</loc>\n"
+        xml_content += f"    <lastmod>{current_date}</lastmod>\n"
+        xml_content += f"    <priority>0.9</priority>\n"
+        xml_content += f"  </url>\n"
+        print(" -> Добавлен в карту: prompts.html")
+    
     # 5. Добавляем страницу дисклеймера
     if os.path.exists("disclaimer.html"):
         xml_content += f"  <url>\n"

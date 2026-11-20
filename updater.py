@@ -240,6 +240,7 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
             <nav class="nav-links">
                 <a href="/" class="nav-link">Главная</a>
                 <a href="/#guides-section" class="nav-link">Гайды</a>
+                <a href="../prompts.html" class="nav-link">Промпты</a>
                 <a href="../news.html" class="nav-link">Новости</a>
                 <a href="../partners.html" class="nav-link">Заработок без вложений</a>
                 <a href="../disclaimer.html" class="nav-link">Дисклеймер</a>
@@ -376,7 +377,7 @@ def rebuild_index_grid():
 
 def sync_root_navbars():
     logging.info("🧭 Синхронизация верхнего меню и SEO-тегов в корневых файлах...")
-    root_files = ["index.html", "news.html", "partners.html", "disclaimer.html"]
+    root_files = ["index.html", "news.html", "prompts.html", "partners.html", "disclaimer.html"]
     
     for filename in root_files:
         filepath = os.path.join(PROJECT_DIR, filename)
@@ -397,6 +398,7 @@ def sync_root_navbars():
                 nav_html = f"""
                     <a href="/" class="nav-link">Главная</a>
                     <a href="/#guides-section" class="nav-link">Гайды</a>
+                    <a href="prompts.html" class="nav-link">Промпты</a>
                     <a href="news.html" class="nav-link">Новости</a>
                     <a href="partners.html" class="nav-link{active_cls}">Заработок без вложений</a>
                     <a href="disclaimer.html" class="nav-link">Дисклеймер</a>

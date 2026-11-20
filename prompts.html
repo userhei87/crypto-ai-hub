@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Библиотека ИИ-промптов для криптотрейдинга — CryptoAI Hub</title>
+<meta content="Готовые проверенные промпты для анализа криптовалют, мемкоинов, графиков и риск-менеджмента в ChatGPT, Gemini и локальной Ollama. Копирование в один клик." name="description"/>
+
+<meta content="website" property="og:type"/>
+<meta content="CryptoAI Hub" property="og:site_name"/>
+<meta content="Библиотека ИИ-промптов для криптотрейдинга — CryptoAI Hub" property="og:title"/>
+<meta content="Готовые шаблоны запросов для нейросетей (Ollama, Gemini, ChatGPT) для глубокого анализа токенов и защиты от скама." property="og:description"/>
+<meta content="https://crypto-ai-hub.com" property="og:url"/>
+<meta content="https://crypto-ai-hub.com" property="og:image"/>
+<link href="css/style.css" rel="stylesheet"/>
+
+
+<meta content="#1e2026" name="theme-color"/>
+<style>
+        .prompt-card {
+            background: #1e2026;
+            border: 1px solid #2b3139;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: border-color 0.2s;
+        }
+        .prompt-card:hover {
+            border-color: #f3ba2f;
+        }
+        .prompt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        .prompt-badge {
+            background: rgba(243, 186, 47, 0.15);
+            color: #f3ba2f;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        .copy-btn {
+            background: #f3ba2f;
+            color: #0b0e11;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .copy-btn:hover {
+            background: #fcd535;
+            transform: translateY(-1px);
+        }
+        .copy-btn.copied {
+            background: #0ecb81 !important;
+            color: #fff !important;
+        }
+        .prompt-box {
+            background: #0b0e11;
+            border: 1px solid #2b3139;
+            border-radius: 8px;
+            padding: 18px;
+            color: #eaecef;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+        }
+    </style>
+<link href="/images/favicon.png" rel="icon" sizes="144x144" type="image/png"/><link href="/images/favicon.png" rel="apple-touch-icon"/><link href="https://crypto-ai-hub.com/prompts.html" rel="canonical"/></head>
+<body>
+<header class="navbar">
+<div class="container">
+<a class="logo" href="/">Crypto<span>AI</span> Hub</a>
+<nav class="nav-links">
+<a class="nav-link" href="/">Главная</a>
+<a class="nav-link" href="/#guides-section">Гайды</a>
+<a class="nav-link" href="prompts.html">Промпты</a>
+<a class="nav-link" href="news.html">Новости</a>
+<a class="nav-link" href="partners.html">Заработок без вложений</a>
+<a class="nav-link" href="disclaimer.html">Дисклеймер</a>
+<a class="btn-ref" href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Регистрация на Binance</a>
+</nav>
+</div>
+</header>
+<main class="guides-section" style="padding: 40px 0; min-height: 75vh;">
+<div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
+<h1 style="color: #fff; margin-bottom: 12px; font-size: 2.2rem; border-left: 4px solid #f3ba2f; padding-left: 15px;">Библиотека ИИ-промптов для криптотрейдинга</h1>
+<p style="color: #b7bdc6; margin-bottom: 35px; font-size: 1.05rem; line-height: 1.6;">
+                Готовые системные шаблоны для <strong>Ollama (Qwen)</strong>, <strong>Google Gemini</strong> и <strong>ChatGPT</strong>. Нажмите кнопку «Скопировать промпт», вставьте свои данные в квадратные скобки и получите холодный, структурированный анализ без эмоций.
+            </p>
+<!-- ПРОМПТ 1 -->
+<article class="prompt-card">
+<div class="prompt-header">
+<div>
+<span class="prompt-badge">📊 Фундаментальный анализ</span>
+<h2 style="color: #fff; margin: 10px 0 0 0; font-size: 1.4rem;">1. Глубокий аудит альткоина перед покупкой</h2>
+</div>
+<button class="copy-btn" onclick="copyPrompt('prompt-1', this)">📋 Скопировать промпт</button>
+</div>
+<p style="color: #b7bdc6; font-size: 0.95rem; margin-bottom: 15px;">Помогает оценить токеномику, риски разлоков и реальную ценность проекта перед инвестицией.</p>
+<pre class="prompt-box" id="prompt-1">Ты профессиональный криптоаналитик и венчурный исследователь. Проведи объективный фундаментальный анализ криптовалютного проекта [НАЗВАНИЕ МОНЕТЫ / ТИКЕР].
+
+Разбери проект строго по следующим пунктам:
+1. Главная проблема, которую решает проект, и его реальные конкуренты.
+2. Токеномика: распределение монет (доля фондов и команды), график разлоков (vesting) и инфляционная модель.
+3. Ключевые катализаторы роста в ближайшие 6–12 месяцев.
+4. Главные красные флаги и риски (регуляторные, технические, риск слива от ранних инвесторов).
+5. Итоговый вердикт: подходит ли актив для долгосрочного портфеля или только для спекуляций. Отвечай без воды и финансовых советов.</pre>
+</article>
+<!-- ПРОМПТ 2 -->
+<article class="prompt-card">
+<div class="prompt-header">
+<div>
+<span class="prompt-badge">🛡️ Защита от скама</span>
+<h2 style="color: #fff; margin: 10px 0 0 0; font-size: 1.4rem;">2. Проверка мемкоина или нового токена на Rug Pull</h2>
+</div>
+<button class="copy-btn" onclick="copyPrompt('prompt-2', this)">📋 Скопировать промпт</button>
+</div>
+<p style="color: #b7bdc6; font-size: 0.95rem; margin-bottom: 15px;">Вставьте данные из DexScreener или GoPlus Security, чтобы нейросеть нашла скрытые уязвимости.</p>
+<pre class="prompt-box" id="prompt-2">Выступи в роли аудитора безопасности смарт-контрактов Web3. Я хочу проверить новый токен [ТИКЕР / АДРЕС КОНТРАКТА] на признаки скама, Honeypot и Rug Pull.
+
+Вот текущие метрики токена:
+- Ликвидность пула и заблокирована ли она (LP Lock): [ВСТАВЬТЕ ДАННЫЕ]
+- Процент монет у топ-10 кошельков: [ВСТАВЬТЕ ДАННЫЕ]
+- Налоги на покупку и продажу (Buy/Sell Tax): [ВСТАВЬТЕ ДАННЫЕ]
+- Открыт ли исходный код контракта и отозваны ли права владельца (Renounced): [ВСТАВЬТЕ ДАННЫЕ]
+
+Оцени уровень риска от 1 до 10, укажи на скрытые угрозы манипуляции ценой и объясни, безопасно ли заходить в этот актив на небольшую сумму.</pre>
+</article>
+<!-- ПРОМПТ 3 -->
+<article class="prompt-card">
+<div class="prompt-header">
+<div>
+<span class="prompt-badge">📈 Технический анализ</span>
+<h2 style="color: #fff; margin: 10px 0 0 0; font-size: 1.4rem;">3. Поиск уровней входа и расчёт риск-менеджмента</h2>
+</div>
+<button class="copy-btn" onclick="copyPrompt('prompt-3', this)">📋 Скопировать промпт</button>
+</div>
+<p style="color: #b7bdc6; font-size: 0.95rem; margin-bottom: 15px;">Рассчитывает безопасный объём сделки, чтобы один стоп-лосс не ударил по вашему депозиту.</p>
+<pre class="prompt-box" id="prompt-3">Ты опытный риск-менеджер и алгоритмический трейдер. Помоги рассчитать параметры сделки и проверить её математическое ожидание.
+
+Мои вводные данные:
+- Общий торговый депозит: $[СУММА ДЕПОЗИТА]
+- Максимальный допустимый риск на одну сделку: [НАПРИМЕР, 1.5]%
+- Торговая пара: [НАПРИМЕР, BTC/USDT]
+- Планируемая цена входа: $[ЦЕНА ВХОДА]
+- Цена отмены сценария (Stop-Loss): $[ЦЕНА СТОПА]
+- Целевая цена фиксации прибыли (Take-Profit): $[ЦЕНА ТЕЙКА]
+
+Рассчитай:
+1. Точный объём позиции в долларах и в монетах.
+2. Соотношение риска к прибыли (Risk/Reward).
+3. Стоит ли входить в эту сделку с точки зрения математики (если R/R меньше 1:2, предупреди меня об этом).</pre>
+</article>
+<!-- ПРОМПТ 4 -->
+<article class="prompt-card">
+<div class="prompt-header">
+<div>
+<span class="prompt-badge">🧠 Анти-FOMO фильтр</span>
+<h2 style="color: #fff; margin: 10px 0 0 0; font-size: 1.4rem;">4. Холодный душ перед импульсивной покупкой</h2>
+</div>
+<button class="copy-btn" onclick="copyPrompt('prompt-4', this)">📋 Скопировать промпт</button>
+</div>
+<p style="color: #b7bdc6; font-size: 0.95rem; margin-bottom: 15px;">Идеально для локальной Ollama: задайте этот вопрос, когда хочется купить монету на зелёной свече.</p>
+<pre class="prompt-box" id="prompt-4">Я собираюсь купить монету [ТИКЕР], потому что она уже выросла на [ПРОЦЕНТ]% за последние сутки, и в соцсетях все пишут о скором росте. 
+
+Выступи в роли беспристрастного риск-менеджера и «адвоката дьявола». 
+Приведи 5 жёстких аргументов, почему покупка прямо сейчас с высокой вероятностью приведёт к убытку или застреванию в позиции. Задай мне 3 проверочных вопроса, на которые я обязан ответить «Да» перед тем, как нажать кнопку «Купить» на бирже.
+📰 Анализ новостей
+5. Выжимка сути из длинной статьи или отчёта
+
+📋 Скопировать промпт
+Быстро отделяет реальные факты от маркетингового шума в крипто-СМИ.
+Проанализируй приведённый ниже текст новости или отчёта. Отбрось эмоциональные заголовки и маркетинговую воду.
+Выдай результат в 3 коротких блоках:
+1. Суть события (максимум 2 предложения простыми словами).
+2. Какие конкретные монеты или сектора рынка это затрагивает (бычий или медвежий сигнал).
+3. На что обратить внимание трейдеру в ближайшие 48 часов.
+Текст для анализа:
+[ВСТАВЬТЕ ТЕКСТ НОВОСТИ]
+Применяйте ИИ-аналитику с минимальными комиссиями
+Проверили монету через нейросеть и нашли точку входа? Откройте торговый счёт на Binance по нашей партнёрской ссылке (код SHARA10), чтобы навсегда снизить спотовые комиссии на 10%.
+Получить скидку 10% на Binance
+
+
+© 2026 CryptoAI Hub. Все права защищены.
+function copyPrompt(elementId, buttonElement) {
+const textToCopy = document.getElementById(elementId).innerText;
+navigator.clipboard.writeText(textToCopy).then(() =&gt; {
+const originalText = buttonElement.innerHTML;
+buttonElement.innerHTML = "✅ Скопировано!";
+buttonElement.classList.add("copied");
+setTimeout(() =&gt; {
+buttonElement.innerHTML = originalText;
+buttonElement.classList.remove("copied");
+}, 2000);
+}).catch(err =&gt; {
+alert("Не удалось скопировать текст. Выделите его вручную.");
+});
+}
+</pre></article></div></main></body></html>
