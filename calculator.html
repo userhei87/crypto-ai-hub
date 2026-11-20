@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Крипто-калькуляторы: Binance Earn и Риск-менеджмент — CryptoAI Hub</title>
+<meta content="Бесплатные онлайн-калькуляторы для криптотрейдеров: расчёт сложного процента в стейкинге Binance Earn и безопасного объёма позиции по риск-менеджменту." name="description"/>
+<meta content="Крипто-калькуляторы: Binance Earn и Риск-менеджмент — CryptoAI Hub" property="og:title"/>
+<meta content="Рассчитайте доходность стейкинга с реинвестированием и безопасный размер сделки с контролем Stop-Loss." property="og:description"/>
+<meta content="website" property="og:type"/>
+<link href="css/style.css" rel="stylesheet"/>
+
+<style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #0b0e11;
+            color: #eaecef;
+            line-height: 1.6;
+        }
+        
+        /* Основной контент */
+        main {
+            max-width: 1140px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .page-header h1 {
+            color: #ffffff;
+            font-size: 2.1rem;
+            margin: 0 0 12px 0;
+        }
+        .page-header p {
+            color: #b7bdc6;
+            max-width: 720px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+        /* Сетка калькуляторов */
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+        }
+        .calc-card {
+            background-color: #1e2329;
+            border: 1px solid #2b3139;
+            border-radius: 12px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .calc-badge {
+            display: inline-block;
+            background: rgba(240, 185, 11, 0.12);
+            color: #f0b90b;
+            border: 1px solid rgba(240, 185, 11, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .calc-card h2 {
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin: 0 0 8px 0;
+        }
+        .calc-desc {
+            color: #b7bdc6;
+            font-size: 0.92rem;
+            margin: 0 0 22px 0;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        label {
+            display: block;
+            color: #b7bdc6;
+            font-size: 0.88rem;
+            margin-bottom: 6px;
+        }
+        input, select {
+            width: 100%;
+            background-color: #0b0e11;
+            border: 1px solid #2b3139;
+            color: #ffffff;
+            padding: 11px 14px;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus {
+            border-color: #f0b90b;
+        }
+        /* Блок результатов */
+        .result-panel {
+            margin-top: 22px;
+            background-color: #161a1e;
+            border: 1px solid #2b3139;
+            border-left: 4px solid #0ecb81;
+            border-radius: 8px;
+            padding: 18px;
+        }
+        .result-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 0.95rem;
+            color: #b7bdc6;
+        }
+        .result-line strong {
+            color: #ffffff;
+            font-size: 1.05rem;
+        }
+        .result-line.highlight strong {
+            color: #0ecb81;
+            font-size: 1.2rem;
+        }
+        .rr-status {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #2b3139;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+        .rr-good { color: #0ecb81; }
+        .rr-bad { color: #f6465d; }
+        /* CTA-баннер */
+        .cta-banner {
+            background: #1e2329;
+            border: 1px solid #f0b90b;
+            border-radius: 12px;
+            padding: 28px;
+            text-align: center;
+            margin-top: 45px;
+        }
+        .cta-banner h3 {
+            color: #fff;
+            margin: 0 0 10px 0;
+            font-size: 1.35rem;
+        }
+        .cta-banner p {
+            color: #b7bdc6;
+            max-width: 660px;
+            margin: 0 auto 20px auto;
+        }
+        .cta-link {
+            display: inline-block;
+            background: #f0b90b;
+            color: #0b0e11;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .cta-link:hover {
+            background: #fcd535;
+        }
+        /* Футер */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #848e9c;
+            border-top: 1px solid #2b3139;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+        .disclaimer-text {
+            font-size: 0.82rem;
+            color: #5e6673;
+            margin-top: 8px;
+        }
+    </style>
+<link href="/images/favicon.png" rel="icon" sizes="144x144" type="image/png"/><link href="/images/favicon.png" rel="apple-touch-icon"/><meta content="#1e2026" name="theme-color"/><link href="https://crypto-ai-hub.com/calculator.html" rel="canonical"/></head>
+<body>
+<header class="navbar">
+<div class="container">
+<a class="logo" href="/">Crypto<span>AI</span> Hub</a>
+<nav class="nav-links">
+<a class="nav-link" href="/">Главная</a>
+<a class="nav-link" href="/#guides-section">Гайды</a>
+<a class="nav-link" href="prompts.html">Промпты</a>
+<a class="nav-link active" href="calculator.html">Калькуляторы</a>
+<a class="nav-link" href="news.html">Новости</a>
+<a class="nav-link" href="partners.html">Заработок без вложений</a>
+<a class="nav-link" href="disclaimer.html">Дисклеймер</a>
+<a class="btn-ref" href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Регистрация на Binance</a>
+</nav>
+</div>
+</header>
+<main>
+<div class="page-header">
+<h1>Интерактивные крипто-калькуляторы</h1>
+<p>Холодная математика вместо эмоций: рассчитайте пассивный доход со сложным процентом в Binance Earn и безопасный объём позиции для торговли.</p>
+</div>
+<div class="calc-grid">
+<!-- КАЛЬКУЛЯТОР 1: BINANCE EARN -->
+<section class="calc-card">
+<div>
+<span class="calc-badge">💰 Пассивный доход</span>
+<h2>1. Калькулятор Binance Earn</h2>
+<p class="calc-desc">Показывает рост депозита при включённом авто-реинвестировании (капитализации процентов).</p>
+<div class="form-group">
+<label for="earn-deposit">Начальный депозит (USDT)</label>
+<input id="earn-deposit" min="1" oninput="calcEarn()" step="any" type="number" value="500"/>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="earn-apr">Ставка APR (% годовых)</label>
+<input id="earn-apr" min="0.01" oninput="calcEarn()" step="0.1" type="number" value="8.5"/>
+</div>
+<div class="form-group">
+<label for="earn-months">Срок (месяцев)</label>
+<input id="earn-months" max="120" min="1" oninput="calcEarn()" step="1" type="number" value="12"/>
+</div>
+</div>
+<div class="form-group">
+<label for="earn-freq">Частота реинвестирования</label>
+<select id="earn-freq" onchange="calcEarn()">
+<option value="365">Ежедневно (Авто-подписка Binance Earn)</option>
+<option value="12">Ежемесячно</option>
+<option value="1">Без реинвестирования (простой процент)</option>
+</select>
+</div>
+</div>
+<div class="result-panel">
+<div class="result-line">
+<span>Доход в месяц (в среднем):</span>
+<strong id="earn-monthly">+3.69 USDT</strong>
+</div>
+<div class="result-line">
+<span>Чистая прибыль за срок:</span>
+<strong id="earn-profit">+44.35 USDT</strong>
+</div>
+<div class="result-line highlight">
+<span>Итоговый баланс:</span>
+<strong id="earn-total">544.35 USDT</strong>
+</div>
+</div>
+</section>
+<!-- КАЛЬКУЛЯТОР 2: РИСК-МЕНЕДЖМЕНТ -->
+<section class="calc-card">
+<div>
+<span class="calc-badge">🛡️ Защита депозита</span>
+<h2>2. Калькулятор риск-менеджмента</h2>
+<p class="calc-desc">Рассчитывает точный объём входа в сделку так, чтобы срабатывание Stop-Loss не нарушило мани-менеджмент.</p>
+<div class="form-row">
+<div class="form-group">
+<label for="risk-deposit">Торговый депозит (USDT)</label>
+<input id="risk-deposit" min="1" oninput="calcRisk()" step="any" type="number" value="500"/>
+</div>
+<div class="form-group">
+<label for="risk-pct">Риск на 1 сделку (%)</label>
+<input id="risk-pct" max="100" min="0.1" oninput="calcRisk()" step="0.1" type="number" value="1.5"/>
+</div>
+</div>
+<div class="form-group">
+<label for="risk-entry">Цена входа ($)</label>
+<input id="risk-entry" min="0.0000001" oninput="calcRisk()" step="any" type="number" value="100"/>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="risk-sl">Цена Stop-Loss ($)</label>
+<input id="risk-sl" min="0.0000001" oninput="calcRisk()" step="any" type="number" value="95"/>
+</div>
+<div class="form-group">
+<label for="risk-tp">Цена Take-Profit ($)</label>
+<input id="risk-tp" min="0.0000001" oninput="calcRisk()" step="any" type="number" value="115"/>
+</div>
+</div>
+</div>
+<div class="result-panel">
+<div class="result-line">
+<span>Макс. убыток при Stop-Loss:</span>
+<strong id="risk-loss">7.50 USDT</strong>
+</div>
+<div class="result-line">
+<span>Потенциальная прибыль (TP):</span>
+<strong id="risk-reward">+22.50 USDT</strong>
+</div>
+<div class="result-line highlight">
+<span>Безопасный объём входа:</span>
+<strong id="risk-position">150.00 USDT</strong>
+</div>
+<div class="rr-status rr-good" id="risk-rr-status">
+                    Соотношение Risk/Reward: 1 : 3.00 — Отличное математическое ожидание
+                </div>
+</div>
+</section>
+</div>
+<section class="cta-banner">
+<h3>Готовы применить расчёты на практике?</h3>
+<p>Зарегистрируйтесь на Binance по нашей партнёрской ссылке (код <strong>SHARA10</strong>), чтобы получить постоянную скидку 10% на спотовые комиссии и доступ к продуктам Binance Earn.</p>
+<a class="cta-link" href="https://binance.com" rel="nofollow noopener" target="_blank">Открыть счёт на Binance со скидкой 10%</a>
+</section>
+</main>
+<footer>
+<p style="margin: 0;">© 2026 CryptoAI Hub. Все права защищены.</p>
+<p class="disclaimer-text">Контент и расчёты носят информационный характер и не являются финансовой рекомендацией.</p>
+</footer>
+<script>
+    function calcEarn() {
+        const P = parseFloat(document.getElementById('earn-deposit').value) || 0;
+        const apr = parseFloat(document.getElementById('earn-apr').value) || 0;
+        const months = parseFloat(document.getElementById('earn-months').value) || 0;
+        const n = parseInt(document.getElementById('earn-freq').value);
+
+        const r = apr / 100;
+        const t = months / 12;
+
+        let total = 0;
+        if (n === 1) {
+            total = P * (1 + r * t);
+        } else {
+            total = P * Math.pow((1 + r / n), n * t);
+        }
+
+        const profit = Math.max(0, total - P);
+        const monthly = months > 0 ? (profit / months) : 0;
+
+        document.getElementById('earn-monthly').innerText = '+' + monthly.toFixed(2) + ' USDT';
+        document.getElementById('earn-profit').innerText = '+' + profit.toFixed(2) + ' USDT';
+        document.getElementById('earn-total').innerText = total.toFixed(2) + ' USDT';
+    }
+
+    function calcRisk() {
+        const deposit = parseFloat(document.getElementById('risk-deposit').value) || 0;
+        const riskPct = parseFloat(document.getElementById('risk-pct').value) || 0;
+        const entry = parseFloat(document.getElementById('risk-entry').value) || 0;
+        const sl = parseFloat(document.getElementById('risk-sl').value) || 0;
+        const tp = parseFloat(document.getElementById('risk-tp').value) || 0;
+
+        const statusEl = document.getElementById('risk-rr-status');
+
+        if (entry <= 0 || sl <= 0 || entry === sl) {
+            document.getElementById('risk-loss').innerText = '0.00 USDT';
+            document.getElementById('risk-reward').innerText = '0.00 USDT';
+            document.getElementById('risk-position').innerText = '0.00 USDT';
+            statusEl.className = 'rr-status rr-bad';
+            statusEl.innerText = 'Укажите корректные цены входа и Stop-Loss';
+            return;
+        }
+
+        const maxLoss = deposit * (riskPct / 100);
+        const slDistancePct = Math.abs(entry - sl) / entry;
+        const positionSize = maxLoss / slDistancePct;
+
+        const tpDistancePct = Math.abs(tp - entry) / entry;
+        const potentialProfit = positionSize * tpDistancePct;
+        const rrRatio = maxLoss > 0 ? (potentialProfit / maxLoss) : 0;
+
+        document.getElementById('risk-loss').innerText = maxLoss.toFixed(2) + ' USDT';
+        document.getElementById('risk-reward').innerText = '+' + potentialProfit.toFixed(2) + ' USDT';
+        document.getElementById('risk-position').innerText = positionSize.toFixed(2) + ' USDT';
+
+        if (rrRatio >= 2) {
+            statusEl.className = 'rr-status rr-good';
+            statusEl.innerText = `Соотношение Risk/Reward: 1 : ${rrRatio.toFixed(2)} — Хорошее математическое ожидание`;
+        } else {
+            statusEl.className = 'rr-status rr-bad';
+            statusEl.innerText = `Соотношение Risk/Reward: 1 : ${rrRatio.toFixed(2)} — Внимание: R/R ниже 1:2, сделка математически невыгодна`;
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        calcEarn();
+        calcRisk();
+    });
+</script>
+</body>
+</html>

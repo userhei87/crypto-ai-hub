@@ -83,7 +83,7 @@ def main():
     print("=" * 65)
     
     # Проверяем все корневые страницы сайта
-    root_pages = ["index.html", "news.html", "partners.html", "disclaimer.html"]
+    root_pages = ["index.html", "news.html", "prompts.html", "calculator.html", "partners.html", "disclaimer.html"]
     for page in root_pages:
         check_file_links(os.path.join(ROOT_DIR, page))
     

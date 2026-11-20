@@ -47,6 +47,15 @@ def generate_sitemap():
         xml_content += f"    <priority>0.9</priority>\n"
         xml_content += f"  </url>\n"
         print(" -> Добавлен в карту: prompts.html")
+        
+    # 4.5. Добавляем страницу калькуляторов
+    if os.path.exists("calculator.html"):
+        xml_content += f"  <url>\n"
+        xml_content += f"    <loc>{BASE_URL}/calculator.html</loc>\n"
+        xml_content += f"    <lastmod>{current_date}</lastmod>\n"
+        xml_content += f"    <priority>0.9</priority>\n"
+        xml_content += f"  </url>\n"
+        print(" -> Добавлен в карту: calculator.html")
     
     # 5. Добавляем страницу дисклеймера
     if os.path.exists("disclaimer.html"):
