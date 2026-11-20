@@ -175,37 +175,71 @@
 <pre class="prompt-box" id="prompt-4">Я собираюсь купить монету [ТИКЕР], потому что она уже выросла на [ПРОЦЕНТ]% за последние сутки, и в соцсетях все пишут о скором росте. 
 
 Выступи в роли беспристрастного риск-менеджера и «адвоката дьявола». 
-Приведи 5 жёстких аргументов, почему покупка прямо сейчас с высокой вероятностью приведёт к убытку или застреванию в позиции. Задай мне 3 проверочных вопроса, на которые я обязан ответить «Да» перед тем, как нажать кнопку «Купить» на бирже.
-📰 Анализ новостей
-5. Выжимка сути из длинной статьи или отчёта
-
-📋 Скопировать промпт
-Быстро отделяет реальные факты от маркетингового шума в крипто-СМИ.
-Проанализируй приведённый ниже текст новости или отчёта. Отбрось эмоциональные заголовки и маркетинговую воду.
-Выдай результат в 3 коротких блоках:
+Приведи 5 жёстких аргументов, почему покупка прямо сейчас с высокой вероятностью приведёт к убытку или застреванию в позиции. Задай мне 3 проверочных вопроса, на которые я обязан ответить «Да» перед тем, как нажать кнопку «Купить» на бирже.</pre>
+</article>
+<!-- ПРОМПТ 5 -->
+<article class="prompt-card">
+<div class="prompt-header">
+<div>
+<span class="prompt-badge">📰 Анализ новостей</span>
+<h2 style="color: #fff; margin: 10px 0 0 0; font-size: 1.4rem;">5. Выжимка сути из длинной статьи или отчёта</h2>
+</div>
+<button class="copy-btn" onclick="copyPrompt('prompt-5', this)">📋 Скопировать промпт</button>
+</div>
+<p style="color: #b7bdc6; font-size: 0.95rem; margin-bottom: 15px;">Быстро отделяет реальные факты от маркетингового шума в крипто-СМИ.</p>
+<pre class="prompt-box" id="prompt-5">Проанализируй приведённый ниже текст новости или отчёта. Отбрось эмоциональные заголовки и маркетинговую воду. Выдай результат в 3 коротких блоках:
 1. Суть события (максимум 2 предложения простыми словами).
 2. Какие конкретные монеты или сектора рынка это затрагивает (бычий или медвежий сигнал).
 3. На что обратить внимание трейдеру в ближайшие 48 часов.
-Текст для анализа:
-[ВСТАВЬТЕ ТЕКСТ НОВОСТИ]
-Применяйте ИИ-аналитику с минимальными комиссиями
-Проверили монету через нейросеть и нашли точку входа? Откройте торговый счёт на Binance по нашей партнёрской ссылке (код SHARA10), чтобы навсегда снизить спотовые комиссии на 10%.
-Получить скидку 10% на Binance
 
-
-© 2026 CryptoAI Hub. Все права защищены.
+Текст для анализа: [ВСТАВЬТЕ ТЕКСТ НОВОСТИ]</pre>
+</article>
+<!-- БЛОК ПРИЗЫВА К ДЕЙСТВИЮ (BINANCE) -->
+<section class="cta-banner" style="background: #1e2329; border: 1px solid #f0b90b; border-radius: 12px; padding: 25px; text-align: center; margin-top: 40px;">
+<h3 style="color: #fff; margin-top: 0; font-size: 1.3rem;">Применяйте ИИ-аналитику с минимальными комиссиями</h3>
+<p style="color: #b7bdc6; max-width: 650px; margin: 10px auto 20px;">Проверили монету через нейросеть и нашли точку входа? Откройте торговый счёт на Binance по нашей партнёрской ссылке (код <strong>SHARA10</strong>), чтобы навсегда снизить спотовые комиссии на 10%.</p>
+<a href="https://binance.com" rel="nofollow noopener" style="display: inline-block; background: #f0b90b; color: #0b0e11; font-weight: bold; padding: 12px 28px; border-radius: 8px; text-decoration: none;" target="_blank">Получить скидку 10% на Binance</a>
+</section>
+</div></main>
+<footer style="text-align: center; padding: 30px 20px; color: #848e9c; border-top: 1px solid #2b3139; margin-top: 50px; font-size: 0.9rem;">
+<p style="margin: 0;">© 2026 CryptoAI Hub. Все права защищены.</p>
+</footer>
+<script>
 function copyPrompt(elementId, buttonElement) {
-const textToCopy = document.getElementById(elementId).innerText;
-navigator.clipboard.writeText(textToCopy).then(() =&gt; {
-const originalText = buttonElement.innerHTML;
-buttonElement.innerHTML = "✅ Скопировано!";
-buttonElement.classList.add("copied");
-setTimeout(() =&gt; {
-buttonElement.innerHTML = originalText;
-buttonElement.classList.remove("copied");
-}, 2000);
-}).catch(err =&gt; {
-alert("Не удалось скопировать текст. Выделите его вручную.");
-});
+    const textToCopy = document.getElementById(elementId).innerText;
+
+    function onSuccess() {
+        const originalText = buttonElement.innerHTML;
+        buttonElement.innerHTML = "✅ Скопировано!";
+        buttonElement.classList.add("copied");
+        setTimeout(() => {
+            buttonElement.innerHTML = originalText;
+            buttonElement.classList.remove("copied");
+        }, 2000);
+    }
+
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(textToCopy).then(onSuccess).catch(() => fallbackCopy());
+    } else {
+        fallbackCopy();
+    }
+
+    function fallbackCopy() {
+        const textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand("copy");
+            onSuccess();
+        } catch (err) {
+            alert("Не удалось скопировать текст. Выделите его вручную.");
+        }
+        document.body.removeChild(textArea);
+    }
 }
-</pre></article></div></main></body></html>
+</script>
+</body>
+</html>
