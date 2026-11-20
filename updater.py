@@ -240,10 +240,15 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
             <nav class="nav-links">
                 <a href="/" class="nav-link">Главная</a>
                 <a href="/#guides-section" class="nav-link">Гайды</a>
-                <a href="../prompts.html" class="nav-link">Промпты</a>
-                <a href="../calculator.html" class="nav-link">Калькуляторы</a>
+                <div class="dropdown">
+                    <a href="#" class="nav-link">Инструменты ▾</a>
+                    <div class="dropdown-content">
+                        <a href="../prompts.html">🤖 Библиотека промптов</a>
+                        <a href="../calculator.html">🧮 Крипто-калькуляторы</a>
+                    </div>
+                </div>
                 <a href="../news.html" class="nav-link">Новости</a>
-                <a href="../partners.html" class="nav-link">Заработок без вложений</a>
+                <a href="../partners.html" class="nav-link">Заработок</a>
                 <a href="../disclaimer.html" class="nav-link">Дисклеймер</a>
                 <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
             </nav>
@@ -394,16 +399,20 @@ def sync_root_navbars():
 
             nav = soup.find("nav", class_="nav-links")
             if nav:
-                active_cls = " active" if filename == "partners.html" else ""
-                active_calc = " active" if filename == "calculator.html" else ""
+                active_partners = " active" if filename == "partners.html" else ""
                 nav.clear()
                 nav_html = f"""
                     <a href="/" class="nav-link">Главная</a>
                     <a href="/#guides-section" class="nav-link">Гайды</a>
-                    <a href="prompts.html" class="nav-link">Промпты</a>
-                    <a href="calculator.html" class="nav-link{active_calc}">Калькуляторы</a>
+                    <div class="dropdown">
+                        <a href="#" class="nav-link">Инструменты ▾</a>
+                        <div class="dropdown-content">
+                            <a href="prompts.html">🤖 Библиотека промптов</a>
+                            <a href="calculator.html">🧮 Крипто-калькуляторы</a>
+                        </div>
+                    </div>
                     <a href="news.html" class="nav-link">Новости</a>
-                    <a href="partners.html" class="nav-link{active_cls}">Заработок без вложений</a>
+                    <a href="partners.html" class="nav-link{active_partners}">Заработок</a>
                     <a href="disclaimer.html" class="nav-link">Дисклеймер</a>
                     <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
                 """
