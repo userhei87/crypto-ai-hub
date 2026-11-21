@@ -248,7 +248,7 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
                     </div>
                 </div>
                 <a href="../news.html" class="nav-link">Новости</a>
-                <a href="../partners.html" class="nav-link">Заработок</a>
+                <a href="../partners.html" class="nav-link">Заработок без вложений</a>
                 <a href="../disclaimer.html" class="nav-link">Дисклеймер</a>
                 <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
             </nav>
@@ -412,7 +412,7 @@ def sync_root_navbars():
                         </div>
                     </div>
                     <a href="news.html" class="nav-link">Новости</a>
-                    <a href="partners.html" class="nav-link{active_partners}">Заработок</a>
+                    <a href="partners.html" class="nav-link{active_partners}">Заработок без вложений</a>
                     <a href="disclaimer.html" class="nav-link">Дисклеймер</a>
                     <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
                 """
