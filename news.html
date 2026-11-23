@@ -10,7 +10,7 @@
 <body>
 <header class="navbar">
 <div class="container">
-<a class="logo" href="/">Crypto<span>AI</span> Hub</a>
+<a class="logo" href="/">Crypto<span>AI</span> Hub</a><button aria-label="Открыть меню" class="menu-toggle">☰</button>
 <nav class="nav-links">
 <a class="nav-link" href="/">Главная</a>
 <a class="nav-link" href="/#guides-section">Гайды</a>
@@ -195,5 +195,5 @@ Paul Maley, глобальный руководитель службы дове�
 <footer class="footer">
 <div class="container"><p>© 2026 CryptoAI Hub. Все права защищены.</p></div>
 </footer>
-</body>
+<script id="mobile-menu-script">document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕' : '☰'; }); } });</script></body>
 </html>

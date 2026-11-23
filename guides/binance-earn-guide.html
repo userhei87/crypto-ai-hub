@@ -48,6 +48,7 @@
     <header class="navbar">
         <div class="container">
             <a href="/" class="logo">Crypto<span>AI</span> Hub</a>
+            <button class="menu-toggle" aria-label="Открыть меню">☰</button>
             <nav class="nav-links">
                 <a href="/" class="nav-link">Главная</a>
                 <a href="/#guides-section" class="nav-link">Гайды</a>
@@ -112,27 +113,27 @@
         <h3 style="color: #fff; margin: 0 0 20px 0; font-size: 1.4rem; border-left: 4px solid #f3ba2f; padding-left: 12px;">Читайте также по теме</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
             
-        <a href="crypto-trading-psychology.html" class="related-card" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
-            <img src="crypto-trading-psychology.png" alt="Психология криптотрейдинга и ИИ: Как победить себя с помощью алгоритмов" style="width: 100%; height: 130px; object-fit: cover;">
+        <a href="crypto-wallet-safety.html" class="related-card" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+            <img src="crypto-wallet-safety.png" alt="Безопасность криптокошельков: Как защитить свои цифровые активы" style="width: 100%; height: 130px; object-fit: cover;">
             <div style="padding: 15px;">
-                <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Психология и ИИ</span>
-                <h4 style="color: #fff; margin: 8px 0 0 0; font-size: 0.95rem; line-height: 1.4;">Психология криптотрейдинга и ИИ: Как победить себя с помощью алгоритмов</h4>
+                <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Безопасность</span>
+                <h4 style="color: #fff; margin: 8px 0 0 0; font-size: 0.95rem; line-height: 1.4;">Безопасность криптокошельков: Как защитить свои цифровые активы</h4>
             </div>
         </a>
         
-        <a href="ai-crypto-trading.html" class="related-card" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
-            <img src="ai-crypto-trading.png" alt="Использование ИИ для анализа криптовалютного рынка" style="width: 100%; height: 130px; object-fit: cover;">
+        <a href="crypto-futures-trading.html" class="related-card" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+            <img src="crypto-futures-trading.png" alt="Введение во фьючерсную торговлю: Как минимизировать риски и не ликвидировать баланс" style="width: 100%; height: 130px; object-fit: cover;">
             <div style="padding: 15px;">
-                <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">ИИ и Трейдинг</span>
-                <h4 style="color: #fff; margin: 8px 0 0 0; font-size: 0.95rem; line-height: 1.4;">Использование ИИ для анализа криптовалютного рынка</h4>
+                <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Фьючерсы</span>
+                <h4 style="color: #fff; margin: 8px 0 0 0; font-size: 0.95rem; line-height: 1.4;">Введение во фьючерсную торговлю: Как минимизировать риски и не ликвидировать баланс</h4>
             </div>
         </a>
         
-        <a href="binance-square-guide.html" class="related-card" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
-            <img src="binance-square-guide.png" alt="Как использовать Binance Square для поиска сильных крипто-трендов и инсайдов" style="width: 100%; height: 130px; object-fit: cover;">
+        <a href="ai-memecoin-analysis.html" class="related-card" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+            <img src="ai-memecoin-thumb.png" alt="Локальный ИИ против мемкоинов: Как находить гем-токены в 2026 году" style="width: 100%; height: 130px; object-fit: cover;">
             <div style="padding: 15px;">
-                <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Трафик и блоги</span>
-                <h4 style="color: #fff; margin: 8px 0 0 0; font-size: 0.95rem; line-height: 1.4;">Как использовать Binance Square для поиска сильных крипто-трендов и инсайдов</h4>
+                <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">ИИ и Мемкоины</span>
+                <h4 style="color: #fff; margin: 8px 0 0 0; font-size: 0.95rem; line-height: 1.4;">Локальный ИИ против мемкоинов: Как находить гем-токены в 2026 году</h4>
             </div>
         </a>
         
@@ -146,5 +147,17 @@
     <footer class="footer">
         <div class="container"><p>&copy; 2026 CryptoAI Hub. Все права защищены.</p></div>
     </footer>
+    <script id="mobile-menu-script">
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('.nav-links');
+            if (toggle && nav) {
+                toggle.addEventListener('click', () => {
+                    nav.classList.toggle('open');
+                    toggle.textContent = nav.classList.contains('open') ? '✕' : '☰';
+                });
+            }
+        });
+    </script>
 </body>
 </html>

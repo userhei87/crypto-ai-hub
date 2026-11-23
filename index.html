@@ -27,7 +27,7 @@
       AI
      </span>
      Hub
-    </a>
+    </a><button aria-label="Открыть меню" class="menu-toggle">☰</button>
 <nav class="nav-links">
 <a class="nav-link" href="/">Главная</a>
 <a class="nav-link" href="/#guides-section">Гайды</a>
@@ -343,5 +343,5 @@
     </p>
 </div>
 </footer>
-</body>
+<script id="mobile-menu-script">document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕' : '☰'; }); } });</script></body>
 </html>

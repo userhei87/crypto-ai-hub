@@ -237,6 +237,7 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
     <header class="navbar">
         <div class="container">
             <a href="/" class="logo">Crypto<span>AI</span> Hub</a>
+            <button class="menu-toggle" aria-label="Открыть меню">☰</button>
             <nav class="nav-links">
                 <a href="/" class="nav-link">Главная</a>
                 <a href="/#guides-section" class="nav-link">Гайды</a>
@@ -286,6 +287,18 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
     <footer class="footer">
         <div class="container"><p>&copy; 2026 CryptoAI Hub. Все права защищены.</p></div>
     </footer>
+    <script id="mobile-menu-script">
+        document.addEventListener('DOMContentLoaded', () => {{
+            const toggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('.nav-links');
+            if (toggle && nav) {{
+                toggle.addEventListener('click', () => {{
+                    nav.classList.toggle('open');
+                    toggle.textContent = nav.classList.contains('open') ? '✕' : '☰';
+                }});
+            }}
+        }});
+    </script>
 </body>
 </html>"""
 
@@ -396,8 +409,19 @@ def sync_root_navbars():
             logo = soup.find("a", class_="logo")
             if logo:
                 logo["href"] = "/"
+                if not logo.find_next_sibling("button", class_="menu-toggle"):
+                    toggle_btn = soup.new_tag("button", attrs={"class": "menu-toggle", "aria-label": "Открыть меню"})
+                    toggle_btn.string = "☰"
+                    logo.insert_after(toggle_btn)
+
+            body = soup.find("body")
+            if body and not body.find("script", id="mobile-menu-script"):
+                menu_script = soup.new_tag("script", id="mobile-menu-script")
+                menu_script.string = "document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕' : '☰'; }); } });"
+                body.append(menu_script)
 
             nav = soup.find("nav", class_="nav-links")
+            
             if nav:
                 active_partners = " active" if filename == "partners.html" else ""
                 nav.clear()

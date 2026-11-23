@@ -138,7 +138,7 @@
 <body>
 <header class="navbar">
 <div class="container nav-container">
-<a class="logo" href="/">CryptoAI <span>Hub</span></a>
+<a class="logo" href="/">CryptoAI <span>Hub</span></a><button aria-label="Открыть меню" class="menu-toggle">☰</button>
 <nav class="nav-links">
 <a class="nav-link" href="/">Главная</a>
 <a class="nav-link" href="/#guides-section">Гайды</a>
@@ -209,5 +209,5 @@
 <p><a href="disclaimer.html" style="color: #848e9c;">Отказ от ответственности</a></p>
 </div>
 </footer>
-</body>
+<script id="mobile-menu-script">document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕' : '☰'; }); } });</script></body>
 </html>
