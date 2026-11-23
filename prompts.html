@@ -80,7 +80,10 @@
 <body>
 <header class="navbar">
 <div class="container">
-<a class="logo" href="/">Crypto<span>AI</span> Hub</a><button aria-label="Открыть меню" class="menu-toggle">☰</button>
+<a class="logo" href="/">Crypto<span>AI</span> Hub</a><div class="header-actions">
+<button aria-label="Открыть меню" class="menu-toggle">Меню</button>
+<a class="btn-ref" href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Регистрация на Binance</a>
+</div>
 <nav class="nav-links">
 <a class="nav-link" href="/">Главная</a>
 <a class="nav-link" href="/#guides-section">Гайды</a>
@@ -94,7 +97,6 @@
 <a class="nav-link" href="news.html">Новости</a>
 <a class="nav-link" href="partners.html">Заработок без вложений</a>
 <a class="nav-link" href="disclaimer.html">Дисклеймер</a>
-<a class="btn-ref" href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Регистрация на Binance</a>
 </nav>
 </div>
 </header>
@@ -247,5 +249,5 @@ function copyPrompt(elementId, buttonElement) {
     }
 }
 </script>
-<script id="mobile-menu-script">document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕' : '☰'; }); } });</script></body>
+<script id="mobile-menu-script">document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕ Меню' : 'Меню'; }); } });</script></body>
 </html>

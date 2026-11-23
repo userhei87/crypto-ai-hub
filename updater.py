@@ -237,7 +237,10 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
     <header class="navbar">
         <div class="container">
             <a href="/" class="logo">Crypto<span>AI</span> Hub</a>
-            <button class="menu-toggle" aria-label="Открыть меню">☰</button>
+            <div class="header-actions">
+                <button class="menu-toggle" aria-label="Открыть меню">Меню</button>
+                <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
+            </div>
             <nav class="nav-links">
                 <a href="/" class="nav-link">Главная</a>
                 <a href="/#guides-section" class="nav-link">Гайды</a>
@@ -251,7 +254,6 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
                 <a href="../news.html" class="nav-link">Новости</a>
                 <a href="../partners.html" class="nav-link">Заработок без вложений</a>
                 <a href="../disclaimer.html" class="nav-link">Дисклеймер</a>
-                <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
             </nav>
         </div>
     </header>
@@ -294,7 +296,7 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
             if (toggle && nav) {{
                 toggle.addEventListener('click', () => {{
                     nav.classList.toggle('open');
-                    toggle.textContent = nav.classList.contains('open') ? '✕' : '☰';
+                    toggle.textContent = nav.classList.contains('open') ? '✕ Меню' : 'Меню';
                 }});
             }}
         }});
@@ -406,22 +408,38 @@ def sync_root_navbars():
             with open(filepath, "r", encoding="utf-8") as f:
                 soup = BeautifulSoup(f.read(), "html.parser")
 
+            header_container = soup.find("header", class_="navbar").find("div", class_="container") if soup.find("header", class_="navbar") else None
             logo = soup.find("a", class_="logo")
             if logo:
                 logo["href"] = "/"
-                if not logo.find_next_sibling("button", class_="menu-toggle"):
-                    toggle_btn = soup.new_tag("button", attrs={"class": "menu-toggle", "aria-label": "Открыть меню"})
-                    toggle_btn.string = "☰"
-                    logo.insert_after(toggle_btn)
+
+            old_toggle = soup.find("button", class_="menu-toggle")
+            if old_toggle:
+                old_toggle.decompose()
+
+            if header_container:
+                actions_div = header_container.find("div", class_="header-actions")
+                if not actions_div:
+                    actions_div = soup.new_tag("div", attrs={"class": "header-actions"})
+                    if logo:
+                        logo.insert_after(actions_div)
+                actions_div.clear()
+                actions_html = f"""
+                    <button class="menu-toggle" aria-label="Открыть меню">Меню</button>
+                    <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
+                """
+                actions_div.append(BeautifulSoup(actions_html, "html.parser"))
 
             body = soup.find("body")
-            if body and not body.find("script", id="mobile-menu-script"):
+            if body:
+                old_script = body.find("script", id="mobile-menu-script")
+                if old_script:
+                    old_script.decompose()
                 menu_script = soup.new_tag("script", id="mobile-menu-script")
-                menu_script.string = "document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕' : '☰'; }); } });"
+                menu_script.string = "document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕ Меню' : 'Меню'; }); } });"
                 body.append(menu_script)
 
             nav = soup.find("nav", class_="nav-links")
-            
             if nav:
                 active_partners = " active" if filename == "partners.html" else ""
                 nav.clear()
@@ -438,7 +456,6 @@ def sync_root_navbars():
                     <a href="news.html" class="nav-link">Новости</a>
                     <a href="partners.html" class="nav-link{active_partners}">Заработок без вложений</a>
                     <a href="disclaimer.html" class="nav-link">Дисклеймер</a>
-                    <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
                 """
                 nav.append(BeautifulSoup(nav_html, "html.parser"))
                 

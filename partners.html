@@ -138,7 +138,10 @@
 <body>
 <header class="navbar">
 <div class="container nav-container">
-<a class="logo" href="/">CryptoAI <span>Hub</span></a><button aria-label="Открыть меню" class="menu-toggle">☰</button>
+<a class="logo" href="/">CryptoAI <span>Hub</span></a><div class="header-actions">
+<button aria-label="Открыть меню" class="menu-toggle">Меню</button>
+<a class="btn-ref" href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Регистрация на Binance</a>
+</div>
 <nav class="nav-links">
 <a class="nav-link" href="/">Главная</a>
 <a class="nav-link" href="/#guides-section">Гайды</a>
@@ -152,7 +155,6 @@
 <a class="nav-link" href="news.html">Новости</a>
 <a class="nav-link active" href="partners.html">Заработок без вложений</a>
 <a class="nav-link" href="disclaimer.html">Дисклеймер</a>
-<a class="btn-ref" href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Регистрация на Binance</a>
 </nav>
 </div>
 </header>
@@ -209,5 +211,5 @@
 <p><a href="disclaimer.html" style="color: #848e9c;">Отказ от ответственности</a></p>
 </div>
 </footer>
-<script id="mobile-menu-script">document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕' : '☰'; }); } });</script></body>
+<script id="mobile-menu-script">document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕ Меню' : 'Меню'; }); } });</script></body>
 </html>
