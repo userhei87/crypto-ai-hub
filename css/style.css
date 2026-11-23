@@ -524,3 +524,33 @@ pre, code {
     word-break: break-all;
 }
 
+/* Технологичные киберпанк-иконки в выпадающем меню */
+.dropdown-content a {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cyber-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.cyber-icon.cyan {
+    color: #00f2fe;
+    filter: drop-shadow(0 0 4px rgba(0, 242, 254, 0.45));
+}
+
+.cyber-icon.gold {
+    color: #fcd535;
+    filter: drop-shadow(0 0 4px rgba(252, 213, 53, 0.45));
+}
+
+.dropdown-content a:hover .cyber-icon {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 7px currentColor);
+}
+

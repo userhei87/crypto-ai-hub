@@ -247,8 +247,8 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
                 <div class="dropdown">
                     <a href="#" class="nav-link">Инструменты ▾</a>
                     <div class="dropdown-content">
-                        <a href="../prompts.html">🤖 Библиотека промптов</a>
-                        <a href="../calculator.html">🧮 Крипто-калькуляторы</a>
+                        <a href="../prompts.html"><svg class="cyber-icon cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6"/><path d="M9 13l2 2-2 2"/><path d="M13 17h3"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>Библиотека промптов</a>
+                        <a href="../calculator.html"><svg class="cyber-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8.01" y2="11"/><line x1="12" y1="11" x2="12.01" y2="11"/><line x1="16" y1="11" x2="16.01" y2="11"/><line x1="8" y1="15" x2="8.01" y2="15"/><line x1="12" y1="15" x2="12.01" y2="15"/><path d="M16 15v4"/></svg>Крипто-калькуляторы</a>
                     </div>
                 </div>
                 <a href="../news.html" class="nav-link">Новости</a>
@@ -449,8 +449,8 @@ def sync_root_navbars():
                     <div class="dropdown">
                         <a href="#" class="nav-link">Инструменты ▾</a>
                         <div class="dropdown-content">
-                            <a href="prompts.html">🤖 Библиотека промптов</a>
-                            <a href="calculator.html">🧮 Крипто-калькуляторы</a>
+                            <a href="prompts.html"><svg class="cyber-icon cyan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6"/><path d="M9 13l2 2-2 2"/><path d="M13 17h3"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>Библиотека промптов</a>
+                            <a href="calculator.html"><svg class="cyber-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8.01" y2="11"/><line x1="12" y1="11" x2="12.01" y2="11"/><line x1="16" y1="11" x2="16.01" y2="11"/><line x1="8" y1="15" x2="8.01" y2="15"/><line x1="12" y1="15" x2="12.01" y2="15"/><path d="M16 15v4"/></svg>Крипто-калькуляторы</a>
                         </div>
                     </div>
                     <a href="news.html" class="nav-link">Новости</a>
