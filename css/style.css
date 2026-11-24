@@ -566,3 +566,16 @@ pre, code {
         gap: 8px;
     }
 }
+
+/* Подсветка активного языка (RU / EN) в шапке */
+.header-brand .menu-toggle {
+    gap: 5px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.header-brand .menu-toggle strong {
+    color: #00f2fe;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+}
