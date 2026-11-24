@@ -580,13 +580,15 @@ pre, code {
     text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
 }
 
-/* Киберпанк-акцент для кнопки «Меню» и пунктов выпадающего списка */
-button.menu-toggle {
+/* Киберпанк-акцент для кнопок «RU | EN», «Меню» и выпадающего списка */
+button.menu-toggle,
+.header-brand .menu-toggle {
     border-color: rgba(0, 242, 254, 0.45);
     box-shadow: 0 0 8px rgba(0, 242, 254, 0.12);
 }
 
-button.menu-toggle:hover {
+button.menu-toggle:hover,
+.header-brand .menu-toggle:hover {
     border-color: #00f2fe;
     color: #00f2fe;
     box-shadow: 0 0 12px rgba(0, 242, 254, 0.35);
