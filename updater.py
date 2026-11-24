@@ -243,9 +243,11 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
 <body>
     <header class="navbar">
         <div class="container">
-            <a href="/" class="logo">Crypto<span>AI</span> Hub</a>
-            <div class="header-actions">
+            <div class="header-brand">
+                <a href="/" class="logo">Crypto<span>AI</span> Hub</a>
                 <a href="/en/guides/{file_name}" class="menu-toggle" style="text-decoration:none;"><strong>RU</strong> | EN</a>
+            </div>
+            <div class="header-actions">
                 <button class="menu-toggle" aria-label="Открыть меню">Меню</button>
                 <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
             </div>
@@ -421,20 +423,27 @@ def sync_root_navbars():
             if logo:
                 logo["href"] = "/"
 
-            old_toggle = soup.find("button", class_="menu-toggle")
-            if old_toggle:
-                old_toggle.decompose()
+            # Удаляем старые кнопки перед пересборкой
+            for old_btn in soup.select("button.menu-toggle, a.menu-toggle"):
+                old_btn.decompose()
 
-            if header_container:
+            if header_container and logo:
+                en_target = "/en/" if filename == "index.html" else f"/en/{filename}"
+                brand_div = header_container.find("div", class_="header-brand")
+                if not brand_div:
+                    brand_div = soup.new_tag("div", attrs={"class": "header-brand"})
+                    logo.insert_before(brand_div)
+                    brand_div.append(logo)
+                
+                lang_link = BeautifulSoup(f'<a href="{en_target}" class="menu-toggle" style="text-decoration:none;"><strong>RU</strong> | EN</a>', "html.parser")
+                brand_div.append(lang_link)
+
                 actions_div = header_container.find("div", class_="header-actions")
                 if not actions_div:
                     actions_div = soup.new_tag("div", attrs={"class": "header-actions"})
-                    if logo:
-                        logo.insert_after(actions_div)
+                    brand_div.insert_after(actions_div)
                 actions_div.clear()
-                en_target = "/en/" if filename == "index.html" else f"/en/{filename}"
                 actions_html = f"""
-                    <a href="{en_target}" class="menu-toggle" style="text-decoration:none;"><strong>RU</strong> | EN</a>
                     <button class="menu-toggle" aria-label="Открыть меню">Меню</button>
                     <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
                 """

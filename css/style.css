@@ -554,3 +554,15 @@ pre, code {
     filter: drop-shadow(0 0 7px currentColor);
 }
 
+/* Левый блок: логотип + кнопка языков RU | EN */
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+@media (max-width: 540px) {
+    .header-brand {
+        gap: 8px;
+    }
+}
