@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crypto Calculators: Binance Earn and Risk Management — CryptoAI Hub</title>
+<meta content="Free online calculators for crypto traders: calculate compound interest in Binance Earn staking and safe position size for risk management." name="description"/>
+<meta content="Crypto Calculators: Binance Earn and Risk Management — CryptoAI Hub" property="og:title"/>
+<meta content="Calculate staking yield with reinvestment and a safe trade size with Stop-Loss control." property="og:description"/>
+<meta content="website" property="og:type"/>
+<link href="../css/style.css" rel="stylesheet"/>
+<style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #0b0e11;
+            color: #eaecef;
+            line-height: 1.6;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1140px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .page-header h1 {
+            color: #ffffff;
+            font-size: 2.1rem;
+            margin: 0 0 12px 0;
+        }
+        .page-header p {
+            color: #b7bdc6;
+            max-width: 720px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+        /* Calculators Grid */
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 28px;
+        }
+        .calc-card {
+            background-color: #1e2329;
+            border: 1px solid #2b3139;
+            border-radius: 12px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .calc-badge {
+            display: inline-block;
+            background: rgba(240, 185, 11, 0.12);
+            color: #f0b90b;
+            border: 1px solid rgba(240, 185, 11, 0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .calc-card h2 {
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin: 0 0 8px 0;
+        }
+        .calc-desc {
+            color: #b7bdc6;
+            font-size: 0.92rem;
+            margin: 0 0 22px 0;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        label {
+            display: block;
+            color: #b7bdc6;
+            font-size: 0.88rem;
+            margin-bottom: 6px;
+        }
+        input, select {
+            width: 100%;
+            background-color: #0b0e11;
+            border: 1px solid #2b3139;
+            color: #ffffff;
+            padding: 11px 14px;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus {
+            border-color: #f0b90b;
+        }
+        /* Result Block */
+        .result-panel {
+            margin-top: 22px;
+            background-color: #161a1e;
+            border: 1px solid #2b3139;
+            border-left: 4px solid #0ecb81;
+            border-radius: 8px;
+            padding: 18px;
+        }
+        .result-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 0.95rem;
+            color: #b7bdc6;
+        }
+        .result-line strong {
+            color: #ffffff;
+            font-size: 1.05rem;
+        }
+        .result-line.highlight strong {
+            color: #0ecb81;
+            font-size: 1.2rem;
+        }
+        .rr-status {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #2b3139;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+        .rr-good { color: #0ecb81; }
+        .rr-bad { color: #f6465d; }
+        /* CTA Banner */
+        .cta-banner {
+            background: #1e2329;
+            border: 1px solid #f0b90b;
+            border-radius: 12px;
+            padding: 28px;
+            text-align: center;
+            margin-top: 45px;
+        }
+        .cta-banner h3 {
+            color: #fff;
+            margin: 0 0 10px 0;
+            font-size: 1.35rem;
+        }
+        .cta-banner p {
+            color: #b7bdc6;
+            max-width: 660px;
+            margin: 0 auto 20px auto;
+        }
+        .cta-link {
+            display: inline-block;
+            background: #f0b90b;
+            color: #0b0e11;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .cta-link:hover {
+            background: #fcd535;
+        }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #848e9c;
+            border-top: 1px solid #2b3139;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+        .disclaimer-text {
+            font-size: 0.82rem;
+            color: #5e6673;
+            margin-top: 8px;
+        }
+    </style>
+<meta content="#1e2026" name="theme-color"/><link href="/images/favicon.png" rel="icon" sizes="144x144" type="image/png"/><link href="/images/favicon.png" rel="apple-touch-icon"/><link href="https://crypto-ai-hub.com/en/calculator.html" rel="canonical"/>
+<link rel="alternate" hreflang="en" href="https://crypto-ai-hub.com/en/calculator.html">
+<link rel="alternate" hreflang="ru" href="https://crypto-ai-hub.com/calculator.html">
+</head>
+<body>
+<header class="navbar">
+<div class="container">
+<a class="logo" href="/en/">Crypto<span>AI</span> Hub</a><div class="header-actions">
+<a href="/calculator.html" class="menu-toggle" style="text-decoration:none;">RU | <strong>EN</strong></a>
+<button aria-label="Open menu" class="menu-toggle">Menu</button>
+<a class="btn-ref" href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Register on Binance</a>
+</div>
+<nav class="nav-links">
+<a class="nav-link" href="/en/">Home</a>
+<a class="nav-link" href="/en/#guides-section">Guides</a>
+<div class="dropdown">
+<a class="nav-link" href="#">Tools ▾</a>
+<div class="dropdown-content">
+<a href="prompts.html"><svg class="cyber-icon cyan" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="16" rx="2" width="16" x="4" y="4"></rect><path d="M9 9h6"></path><path d="M9 13l2 2-2 2"></path><path d="M13 17h3"></path><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"></path></svg>Prompt Library</a>
+<a href="calculator.html"><svg class="cyber-icon gold" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="20" rx="2" width="16" x="4" y="2"></rect><line x1="8" x2="16" y1="6" y2="6"></line><line x1="8" x2="8.01" y1="11" y2="11"></line><line x1="12" x2="12.01" y1="11" y2="11"></line><line x1="16" x2="16.01" y1="11" y2="11"></line><line x1="8" x2="8.01" y1="15" y2="15"></line><line x1="12" x2="12.01" y1="15" y2="15"></line><path d="M16 15v4"></path></svg>Crypto Calculators</a>
+</div>
+</div>
+<a class="nav-link" href="news.html">News</a>
+<a class="nav-link" href="partners.html">Earn Without Investment</a>
+<a class="nav-link" href="disclaimer.html">Disclaimer</a>
+</nav>
+</div>
+</header>
+<main>
+<div class="page-header">
+<h1>Interactive Crypto Calculators</h1>
+<p>Cold math instead of emotions: calculate passive income with compound interest in Binance Earn and safe position size for trading.</p>
+</div>
+<div class="calc-grid">
+<!-- CALCULATOR 1: BINANCE EARN -->
+<section class="calc-card">
+<div>
+<span class="calc-badge">💰 Passive Income</span>
+<h2>1. Binance Earn Calculator</h2>
+<p class="calc-desc">Shows deposit growth with auto-reinvestment (compound interest) enabled.</p>
+<div class="form-group">
+<label for="earn-deposit">Initial Deposit (USDT)</label>
+<input id="earn-deposit" min="1" oninput="calcEarn()" step="any" type="number" value="500"/>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="earn-apr">APR Rate (% per annum)</label>
+<input id="earn-apr" min="0.01" oninput="calcEarn()" step="0.1" type="number" value="8.5"/>
+</div>
+<div class="form-group">
+<label for="earn-months">Term (months)</label>
+<input id="earn-months" max="120" min="1" oninput="calcEarn()" step="1" type="number" value="12"/>
+</div>
+</div>
+<div class="form-group">
+<label for="earn-freq">Reinvestment Frequency</label>
+<select id="earn-freq" onchange="calcEarn()">
+<option value="365">Daily (Binance Earn Auto-Subscribe)</option>
+<option value="12">Monthly</option>
+<option value="1">No Reinvestment (simple interest)</option>
+</select>
+</div>
+</div>
+<div class="result-panel">
+<div class="result-line">
+<span>Monthly Income (average):</span>
+<strong id="earn-monthly">+3.69 USDT</strong>
+</div>
+<div class="result-line">
+<span>Net Profit for Term:</span>
+<strong id="earn-profit">+44.35 USDT</strong>
+</div>
+<div class="result-line highlight">
+<span>Final Balance:</span>
+<strong id="earn-total">544.35 USDT</strong>
+</div>
+</div>
+</section>
+<!-- CALCULATOR 2: RISK MANAGEMENT -->
+<section class="calc-card">
+<div>
+<span class="calc-badge">🛡️ Deposit Protection</span>
+<h2>2. Risk Management Calculator</h2>
+<p class="calc-desc">Calculates the exact entry volume for a trade so that a Stop-Loss trigger does not violate money management.</p>
+<div class="form-row">
+<div class="form-group">
+<label for="risk-deposit">Trading Deposit (USDT)</label>
+<input id="risk-deposit" min="1" oninput="calcRisk()" step="any" type="number" value="500"/>
+</div>
+<div class="form-group">
+<label for="risk-pct">Risk per 1 Trade (%)</label>
+<input id="risk-pct" max="100" min="0.1" oninput="calcRisk()" step="0.1" type="number" value="1.5"/>
+</div>
+</div>
+<div class="form-group">
+<label for="risk-entry">Entry Price ($)</label>
+<input id="risk-entry" min="0.0000001" oninput="calcRisk()" step="any" type="number" value="100"/>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label for="risk-sl">Stop-Loss Price ($)</label>
+<input id="risk-sl" min="0.0000001" oninput="calcRisk()" step="any" type="number" value="95"/>
+</div>
+<div class="form-group">
+<label for="risk-tp">Take-Profit Price ($)</label>
+<input id="risk-tp" min="0.0000001" oninput="calcRisk()" step="any" type="number" value="115"/>
+</div>
+</div>
+</div>
+<div class="result-panel">
+<div class="result-line">
+<span>Max. Loss at Stop-Loss:</span>
+<strong id="risk-loss">7.50 USDT</strong>
+</div>
+<div class="result-line">
+<span>Potential Profit (TP):</span>
+<strong id="risk-reward">+22.50 USDT</strong>
+</div>
+<div class="result-line highlight">
+<span>Safe Entry Volume:</span>
+<strong id="risk-position">150.00 USDT</strong>
+</div>
+<div class="rr-status rr-good" id="risk-rr-status">
+                    Risk/Reward Ratio: 1 : 3.00 — Excellent mathematical expectation
+                </div>
+</div>
+</section>
+</div>
+<section class="cta-banner">
+<h3>Ready to apply calculations in practice?</h3>
+<p>Register on Binance using our partner link (code <strong>SHARA10</strong>) to get a permanent 10% discount on spot trading fees and access to Binance Earn products.</p>
+<a class="cta-link" href="https://www.binance.com/register?ref=SHARA10" rel="nofollow noopener" target="_blank">Open an account on Binance with a 10% discount</a>
+</section>
+</main>
+<footer>
+<p style="margin: 0;">© 2026 CryptoAI Hub. All rights reserved.</p>
+<p class="disclaimer-text">Content and calculations are for informational purposes only and do not constitute financial advice.</p>
+</footer>
+<script>
+    function calcEarn() {
+        const P = parseFloat(document.getElementById('earn-deposit').value) || 0;
+        const apr = parseFloat(document.getElementById('earn-apr').value) || 0;
+        const months = parseFloat(document.getElementById('earn-months').value) || 0;
+        const n = parseInt(document.getElementById('earn-freq').value);
+
+        const r = apr / 100;
+        const t = months / 12;
+
+        let total = 0;
+        if (n === 1) {
+            total = P * (1 + r * t);
+        } else {
+            total = P * Math.pow((1 + r / n), n * t);
+        }
+
+        const profit = Math.max(0, total - P);
+        const monthly = months > 0 ? (profit / months) : 0;
+
+        document.getElementById('earn-monthly').innerText = '+' + monthly.toFixed(2) + ' USDT';
+        document.getElementById('earn-profit').innerText = '+' + profit.toFixed(2) + ' USDT';
+        document.getElementById('earn-total').innerText = total.toFixed(2) + ' USDT';
+    }
+
+    function calcRisk() {
+        const deposit = parseFloat(document.getElementById('risk-deposit').value) || 0;
+        const riskPct = parseFloat(document.getElementById('risk-pct').value) || 0;
+        const entry = parseFloat(document.getElementById('risk-entry').value) || 0;
+        const sl = parseFloat(document.getElementById('risk-sl').value) || 0;
+        const tp = parseFloat(document.getElementById('risk-tp').value) || 0;
+
+        const statusEl = document.getElementById('risk-rr-status');
+
+        if (entry <= 0 || sl <= 0 || entry === sl) {
+            document.getElementById('risk-loss').innerText = '0.00 USDT';
+            document.getElementById('risk-reward').innerText = '0.00 USDT';
+            document.getElementById('risk-position').innerText = '0.00 USDT';
+            statusEl.className = 'rr-status rr-bad';
+            statusEl.innerText = 'Please specify correct Entry and Stop-Loss prices';
+            return;
+        }
+
+        const maxLoss = deposit * (riskPct / 100);
+        const slDistancePct = Math.abs(entry - sl) / entry;
+        const positionSize = maxLoss / slDistancePct;
+
+        const tpDistancePct = Math.abs(tp - entry) / entry;
+        const potentialProfit = positionSize * tpDistancePct;
+        const rrRatio = maxLoss > 0 ? (potentialProfit / maxLoss) : 0;
+
+        document.getElementById('risk-loss').innerText = maxLoss.toFixed(2) + ' USDT';
+        document.getElementById('risk-reward').innerText = '+' + potentialProfit.toFixed(2) + ' USDT';
+        document.getElementById('risk-position').innerText = positionSize.toFixed(2) + ' USDT';
+
+        if (rrRatio >= 2) {
+            statusEl.className = 'rr-status rr-good';
+            statusEl.innerText = `Risk/Reward Ratio: 1 : ${rrRatio.toFixed(2)} — Good mathematical expectation`;
+        } else {
+            statusEl.className = 'rr-status rr-bad';
+            statusEl.innerText = `Risk/Reward Ratio: 1 : ${rrRatio.toFixed(2)} — Warning: R/R below 1:2, trade is mathematically unprofitable`;
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        calcEarn();
+        calcRisk();
+    });
+</script>
+<script id="mobile-menu-script">document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('button.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕ Menu' : 'Menu'; }); } });</script></body>
+</html>

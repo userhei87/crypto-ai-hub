@@ -77,6 +77,32 @@ def generate_sitemap():
                 xml_content += f"    <priority>0.8</priority>\n"
                 xml_content += f"  </url>\n"
                 print(f" -> Добавлен в карту: guides/{file}")
+    
+    # 7. Добавляем английскую версию сайта (/en/ и /en/guides/)
+    en_root_pages = ["index.html", "prompts.html", "calculator.html", "news.html", "partners.html", "disclaimer.html"]
+    for page in en_root_pages:
+        en_file_path = os.path.join("en", page)
+        if os.path.exists(en_file_path):
+            loc_url = f"{BASE_URL}/en/" if page == "index.html" else f"{BASE_URL}/en/{page}"
+            prio = "1.0" if page == "index.html" else "0.8"
+            xml_content += f"  <url>\n"
+            xml_content += f"    <loc>{loc_url}</loc>\n"
+            xml_content += f"    <lastmod>{current_date}</lastmod>\n"
+            xml_content += f"    <priority>{prio}</priority>\n"
+            xml_content += f"  </url>\n"
+            print(f" -> Добавлен в карту (EN): {loc_url}")
+
+    en_guides_dir = os.path.join("en", "guides")
+    if os.path.exists(en_guides_dir):
+        for fname in sorted(os.listdir(en_guides_dir)):
+            if fname.endswith(".html"):
+                loc_url = f"{BASE_URL}/en/guides/{fname}"
+                xml_content += f"  <url>\n"
+                xml_content += f"    <loc>{loc_url}</loc>\n"
+                xml_content += f"    <lastmod>{current_date}</lastmod>\n"
+                xml_content += f"    <priority>0.8</priority>\n"
+                xml_content += f"  </url>\n"
+                print(f" -> Добавлен в карту (EN Guide): {fname}")    
                 
     xml_content += "</urlset>\n"
     

@@ -200,6 +200,8 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
     <title>{safe_topic} — CryptoAI Hub</title>
     <meta name="description" content="{safe_desc}">
     <link rel="canonical" href="{page_url}">
+    <link rel="alternate" hreflang="ru" href="{page_url}">
+    <link rel="alternate" hreflang="en" href="https://crypto-ai-hub.com/en/guides/{file_name}">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="CryptoAI Hub">
     <meta property="og:title" content="{safe_topic} — CryptoAI Hub">
@@ -243,6 +245,7 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
         <div class="container">
             <a href="/" class="logo">Crypto<span>AI</span> Hub</a>
             <div class="header-actions">
+                <a href="/en/guides/{file_name}" class="menu-toggle" style="text-decoration:none;"><strong>RU</strong> | EN</a>
                 <button class="menu-toggle" aria-label="Открыть меню">Меню</button>
                 <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
             </div>
@@ -296,7 +299,7 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
     </footer>
     <script id="mobile-menu-script">
         document.addEventListener('DOMContentLoaded', () => {{
-            const toggle = document.querySelector('.menu-toggle');
+            const toggle = document.querySelector('button.menu-toggle');
             const nav = document.querySelector('.nav-links');
             if (toggle && nav) {{
                 toggle.addEventListener('click', () => {{
@@ -429,7 +432,9 @@ def sync_root_navbars():
                     if logo:
                         logo.insert_after(actions_div)
                 actions_div.clear()
+                en_target = "/en/" if filename == "index.html" else f"/en/{filename}"
                 actions_html = f"""
+                    <a href="{en_target}" class="menu-toggle" style="text-decoration:none;"><strong>RU</strong> | EN</a>
                     <button class="menu-toggle" aria-label="Открыть меню">Меню</button>
                     <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" class="btn-ref">Регистрация на Binance</a>
                 """
@@ -441,7 +446,7 @@ def sync_root_navbars():
                 if old_script:
                     old_script.decompose()
                 menu_script = soup.new_tag("script", id="mobile-menu-script")
-                menu_script.string = "document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕ Меню' : 'Меню'; }); } });"
+                menu_script.string = "document.addEventListener('DOMContentLoaded', () => { const toggle = document.querySelector('button.menu-toggle'); const nav = document.querySelector('.nav-links'); if (toggle && nav) { toggle.addEventListener('click', () => { nav.classList.toggle('open'); toggle.textContent = nav.classList.contains('open') ? '✕ Меню' : 'Меню'; }); } });"
                 body.append(menu_script)
 
             nav = soup.find("nav", class_="nav-links")
@@ -479,6 +484,11 @@ def sync_root_navbars():
                     old_can.decompose()
                 clean_url = "https://crypto-ai-hub.com/" if filename == "index.html" else f"https://crypto-ai-hub.com/{filename}"
                 head.append(soup.new_tag("link", rel="canonical", href=clean_url))
+                for old_alt in head.find_all("link", rel="alternate"):
+                    old_alt.decompose()
+                en_clean_url = "https://crypto-ai-hub.com/en/" if filename == "index.html" else f"https://crypto-ai-hub.com/en/{filename}"
+                head.append(soup.new_tag("link", rel="alternate", hreflang="ru", href=clean_url))
+                head.append(soup.new_tag("link", rel="alternate", hreflang="en", href=en_clean_url))
 
                 if filename == "index.html" and not head.find("script", id="clean-url-script"):
                     clean_script = soup.new_tag("script", id="clean-url-script")
