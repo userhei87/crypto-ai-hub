@@ -197,14 +197,14 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{safe_topic} — CryptoAI Hub</title>
+    <title>{safe_topic} — Crypto AI Hub</title>
     <meta name="description" content="{safe_desc}">
     <link rel="canonical" href="{page_url}">
     <link rel="alternate" hreflang="ru" href="{page_url}">
     <link rel="alternate" hreflang="en" href="https://crypto-ai-hub.com/en/guides/{file_name}">
     <meta property="og:type" content="article">
-    <meta property="og:site_name" content="CryptoAI Hub">
-    <meta property="og:title" content="{safe_topic} — CryptoAI Hub">
+    <meta property="og:site_name" content="Crypto AI Hub">
+    <meta property="og:title" content="{safe_topic} — Crypto AI Hub">
     <meta property="og:description" content="{safe_desc}">
     <meta property="og:url" content="{page_url}">
     <meta property="og:image" content="{og_image_url}">
@@ -222,12 +222,12 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
       "image": "{og_image_url}",
       "author": {{
         "@type": "Organization",
-        "name": "CryptoAI Hub",
+        "name": "Crypto AI Hub",
         "url": "https://crypto-ai-hub.com/"
       }},
       "publisher": {{
         "@type": "Organization",
-        "name": "CryptoAI Hub",
+        "name": "Crypto AI Hub",
         "logo": {{
           "@type": "ImageObject",
           "url": "https://crypto-ai-hub.com/images/favicon.png"
@@ -244,7 +244,7 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
     <header class="navbar">
         <div class="container">
             <div class="header-brand">
-                <a href="/" class="logo">Crypto<span>AI</span> Hub</a>
+                <a href="/" class="logo">Crypto <span>AI</span> Hub</a>
                 <a href="/en/guides/{file_name}" class="menu-toggle" style="text-decoration:none;"><strong>RU</strong> | EN</a>
             </div>
             <div class="header-actions">
@@ -276,7 +276,7 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
             </div>
 
             <div class="promo-banner-inline" style="background: linear-gradient(135deg, #1e2026, #2b3139); border-left: 4px solid #f3ba2f; padding: 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-align: center;">
-                <h4 style="color: #f3ba2f; margin: 0 0 12px 0; font-size: 1.2rem; font-weight: 600;">🔥 Бонус для читателей CryptoAI Hub</h4>
+                <h4 style="color: #f3ba2f; margin: 0 0 12px 0; font-size: 1.2rem; font-weight: 600;">🔥 Бонус для читателей Crypto AI Hub</h4>
                 <p style="color: #eaeaea; margin: 0 0 20px 0; font-size: 0.95rem; line-height: 1.6;">Регистрируйтесь на Binance по нашей ссылке и получите постоянную скидку 10% на все спотовые комиссии, а также приветственный инвесторский бонус до $100.</p>
                 <a href="{BINANCE_REF_URL}" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #f3ba2f; color: #000; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 0.95rem; transition: background 0.2s; margin: 0 auto;">Получить скидку 10% на Binance &rarr;</a>
             </div>
@@ -297,7 +297,7 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
     </main>
 
     <footer class="footer">
-        <div class="container"><p>&copy; 2026 CryptoAI Hub. Все права защищены.</p></div>
+        <div class="container"><p>&copy; 2026 Crypto AI Hub. Все права защищены.</p></div>
     </footer>
     <script id="mobile-menu-script">
         document.addEventListener('DOMContentLoaded', () => {{
