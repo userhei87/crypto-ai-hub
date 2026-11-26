@@ -261,6 +261,7 @@ def build_article_html(file_name, topic, img_name, desc, article_content):
                         <a href="../calculator.html"><svg class="cyber-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8.01" y2="11"/><line x1="12" y1="11" x2="12.01" y2="11"/><line x1="16" y1="11" x2="16.01" y2="11"/><line x1="8" y1="15" x2="8.01" y2="15"/><line x1="12" y1="15" x2="12.01" y2="15"/><path d="M16 15v4"/></svg>Крипто-калькуляторы</a>
                     </div>
                 </div>
+                <a href="../wotd.html" class="nav-link">Ответы WOTD</a>
                 <a href="../news.html" class="nav-link">Новости</a>
                 <a href="../partners.html" class="nav-link">Заработок без вложений</a>
                 <a href="../disclaimer.html" class="nav-link">Дисклеймер</a>
@@ -416,7 +417,7 @@ def rebuild_index_grid():
 
 def sync_root_navbars():
     logging.info("🧭 Синхронизация верхнего меню и SEO-тегов в корневых файлах...")
-    root_files = ["index.html", "news.html", "prompts.html", "calculator.html", "partners.html", "disclaimer.html"]
+    root_files = ["index.html", "wotd.html", "news.html", "prompts.html", "calculator.html", "partners.html", "disclaimer.html"]
     
     for filename in root_files:
         filepath = os.path.join(PROJECT_DIR, filename)
@@ -468,6 +469,7 @@ def sync_root_navbars():
 
             nav = soup.find("nav", class_="nav-links")
             if nav:
+                active_wotd = " active" if filename == "wotd.html" else ""
                 active_partners = " active" if filename == "partners.html" else ""
                 nav.clear()
                 nav_html = f"""
@@ -480,6 +482,7 @@ def sync_root_navbars():
                             <a href="calculator.html"><svg class="cyber-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="8.01" y2="11"/><line x1="12" y1="11" x2="12.01" y2="11"/><line x1="16" y1="11" x2="16.01" y2="11"/><line x1="8" y1="15" x2="8.01" y2="15"/><line x1="12" y1="15" x2="12.01" y2="15"/><path d="M16 15v4"/></svg>Крипто-калькуляторы</a>
                         </div>
                     </div>
+                    <a href="wotd.html" class="nav-link{active_wotd}">Ответы WOTD</a>
                     <a href="news.html" class="nav-link">Новости</a>
                     <a href="partners.html" class="nav-link{active_partners}">Заработок без вложений</a>
                     <a href="disclaimer.html" class="nav-link">Дисклеймер</a>

@@ -57,6 +57,15 @@ def generate_sitemap():
         xml_content += f"  </url>\n"
         print(" -> Добавлен в карту: calculator.html")
     
+    # 4.6. Добавляем страницу ответов Binance WOTD
+    if os.path.exists("wotd.html"):
+        xml_content += f"  <url>\n"
+        xml_content += f"    <loc>{BASE_URL}/wotd.html</loc>\n"
+        xml_content += f"    <lastmod>{current_date}</lastmod>\n"
+        xml_content += f"    <priority>0.9</priority>\n"
+        xml_content += f"  </url>\n"
+        print(" -> Добавлен в карту: wotd.html")
+    
     # 5. Добавляем страницу дисклеймера
     if os.path.exists("disclaimer.html"):
         xml_content += f"  <url>\n"
@@ -79,7 +88,7 @@ def generate_sitemap():
                 print(f" -> Добавлен в карту: guides/{file}")
     
     # 7. Добавляем английскую версию сайта (/en/ и /en/guides/)
-    en_root_pages = ["index.html", "prompts.html", "calculator.html", "news.html", "partners.html", "disclaimer.html"]
+    en_root_pages = ["index.html", "prompts.html", "calculator.html", "wotd.html", "news.html", "partners.html", "disclaimer.html"]
     for page in en_root_pages:
         en_file_path = os.path.join("en", page)
         if os.path.exists(en_file_path):

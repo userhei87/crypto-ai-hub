@@ -638,3 +638,62 @@ button.menu-toggle:hover,
     box-shadow: 0 0 16px rgba(0, 242, 254, 0.35);
     transform: translateY(-1px);
 }
+
+/* Стили страницы ответов Binance WOTD */
+.wotd-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    background: #1e2026;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #2b3139;
+}
+
+.wotd-table th,
+.wotd-table td {
+    padding: 15px 18px;
+    text-align: left;
+    border-bottom: 1px solid #2b3139;
+}
+
+.wotd-table th {
+    background: #16181d;
+    color: #f3ba2f;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wotd-words-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.wotd-word-chip {
+    background: #2b3139;
+    border: 1px solid rgba(0, 242, 254, 0.35);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.wotd-word-chip:hover {
+    border-color: #00f2fe;
+    background: rgba(0, 242, 254, 0.15);
+    color: #00f2fe;
+    transform: translateY(-1px);
+}
+
+.wotd-word-chip.copied {
+    border-color: #0ecb81;
+    background: rgba(14, 203, 129, 0.2);
+    color: #0ecb81;
+}
