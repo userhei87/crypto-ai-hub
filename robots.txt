@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /*.bak$
+Disallow: /*.py$
+Disallow: /*.bat$
 
-Sitemap: https://crypto-ai-hub.com
+Sitemap: https://crypto-ai-hub.com/sitemap.xml
