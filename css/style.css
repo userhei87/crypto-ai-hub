@@ -604,3 +604,37 @@ button.menu-toggle:hover,
     color: #00f2fe !important;
     text-shadow: 0 0 8px rgba(0, 242, 254, 0.45);
 }
+
+/* Выравнивание подвала по центру в колонку */
+.footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Кнопка Telegram в подвале сайта */
+.footer-tg-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 9px 18px;
+    background: rgba(0, 242, 254, 0.08);
+    border: 1px solid rgba(0, 242, 254, 0.45);
+    border-radius: 8px;
+    color: #00f2fe;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.12);
+}
+
+.footer-tg-btn:hover {
+    background: rgba(0, 242, 254, 0.18);
+    border-color: #00f2fe;
+    color: #ffffff;
+    box-shadow: 0 0 16px rgba(0, 242, 254, 0.35);
+    transform: translateY(-1px);
+}
