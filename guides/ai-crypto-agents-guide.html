@@ -117,7 +117,7 @@
 <h3>Выбор инструментов для доступа к данным</h3>
 <p>Вашему ИИ-агенту нужны данные. Существует несколько ключевых источников:</p>
 <ul>
-<li><strong>API криптовалютных бирж:</strong> Это основной источник ценовых данных, объемов торгов, книги ордеров. Крупные биржи, такие как <a href="https://www.binance.com/register?ref=SHARA10" rel="noreferrer noopener" target="_blank">Binance</a>, предоставляют robustные API. Вам нужно будет зарегистрировать аккаунт на <a href="https://www.binance.com/register?ref=SHARA10" rel="noreferrer noopener" target="_blank">Binance</a> и получить ключи API (API Key и Secret Key) в настройках безопасности. <strong>Всегда храните их в тайне и никогда не делитесь ими.</strong></li>
+<li><strong>API криптовалютных бирж:</strong> Это основной источник ценовых данных, объемов торгов, книги ордеров. Крупные биржи, такие как <a href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Binance</a>, предоставляют robustные API. Вам нужно будет зарегистрировать аккаунт на <a href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Binance</a> и получить ключи API (API Key и Secret Key) в настройках безопасности. <strong>Всегда храните их в тайне и никогда не делитесь ими.</strong></li>
 <li><strong>Блокчейн-эксплореры:</strong> Для получения данных из блокчейна (количество транзакций, активность адресов, объем токенов в DeFi-протоколах). Пример – Etherscan для Ethereum, BscScan для BNB Chain. Многие из них предлагают API.</li>
 <li><strong>Новостные агрегаторы и социальные сети:</strong> Для анализа настроений (sentiment analysis). Существуют специализированные новостные API для Web3-пространства (например, CoinDesk API, CryptoSlate API) или общие API для Twitter (X), Reddit.</li>
 </ul>
@@ -128,14 +128,14 @@
 <ul>
 <li>Мониторинг цены определенной криптовалюты (например, Bitcoin, Ethereum) на предмет значительных движений.</li>
 <li>Анализ новостного фона по выбранным активам на предмет позитивных или негативных событий.</li>
-<li>Отслеживание аномалий в объеме торгов на <a href="https://www.binance.com/register?ref=SHARA10" rel="noreferrer noopener" target="_blank">Binance</a> или других биржах.</li>
+<li>Отслеживание аномалий в объеме торгов на <a href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Binance</a> или других биржах.</li>
 </ul>
 <p><strong>Пример стратегии:</strong> "Если цена Bitcoin упала более чем на 5% за 1 час, и при этом в новостном фоне нет явных негативных событий, но есть рост объемов, сообщить о потенциальной возможности отскока или паники."</p>
 <h3>Написание базового скрипта агента</h3>
 <p>Для программирования агента чаще всего используется <strong>Python</strong> из-за его простоты и богатой экосистемы библиотек для работы с API и ИИ.
 <p>Ваш скрипт будет состоять из следующих основных частей:</p>
 <ul>
-<li><strong>Получение данных:</strong> Использование библиотек для HTTP-запросов (например, <code>requests</code>) для взаимодействия с API <a href="https://www.binance.com/register?ref=SHARA10" rel="noreferrer noopener" target="_blank">Binance</a> или других источников.</li>
+<li><strong>Получение данных:</strong> Использование библиотек для HTTP-запросов (например, <code>requests</code>) для взаимодействия с API <a href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Binance</a> или других источников.</li>
 <li><strong>Взаимодействие с LLM (Ollama):</strong> Отправка полученных данных локальной модели Qwen для анализа.</li>
 <li><strong>Логика принятия решений:</strong> Обработка ответа от Qwen и применение вашей стратегии.</li>
 <li><strong>Оповещение:</strong> Отправка уведомлений.</li>
@@ -179,7 +179,7 @@ if __name__ == "__main__":
 </code></pre>
 <p>Этот пример показывает, как вы можете запросить у вашей локальной модели Qwen <strong>объективный, "холодный" анализ</strong> предоставленных данных, без эмоциональной окраски, присущей многим публичным моделям, обученным на большом количестве человеческого текста. Это ключевое преимущество использования локальных моделей для рыночной аналитики.</p>
 <h3>Интеграция с источниками данных</h3>
-<p>Для взаимодействия с API биржи <a href="https://www.binance.com/register?ref=SHARA10" rel="noreferrer noopener" target="_blank">Binance</a> или других сервисов вам понадобятся библиотеки, такие как <code>python-binance</code> для <a href="https://www.binance.com/register?ref=SHARA10" rel="noreferrer noopener" target="_blank">Binance</a>. Установите их командой <code>pip install python-binance</code>.</p>
+<p>Для взаимодействия с API биржи <a href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Binance</a> или других сервисов вам понадобятся библиотеки, такие как <code>python-binance</code> для <a href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Binance</a>. Установите их командой <code>pip install python-binance</code>.</p>
 <p><strong>Важно:</strong> Никогда не храните ваши API ключи напрямую в коде. Используйте переменные окружения или файлы конфигурации (например, <code>.env</code> файл) для их безопасного хранения.</p>
 <h3>Реализация механизма принятия решений и оповещений</h3>
 <p>После получения анализа от вашей модели Qwen, вам нужно будет запрограммировать, как агент будет реагировать. Это могут быть простые правила "если-то":</p>
@@ -195,7 +195,7 @@ if __name__ == "__main__":
 <h2>Тестирование и оптимизация агента</h2>
 <p>Создание агента – это итеративный процесс. Вам потребуется его тестировать и улучшать.</p>
 <h3>Бэктестинг (Backtesting)</h3>
-<p>Перед запуском агента в реальном времени, протестируйте его на исторических данных. Это позволит вам увидеть, как ваша стратегия работала бы в прошлом, и выявить слабые места. Многие биржи, включая <a href="https://www.binance.com/register?ref=SHARA10" rel="noreferrer noopener" target="_blank">Binance</a>, предоставляют доступ к историческим данным через свои API.</p>
+<p>Перед запуском агента в реальном времени, протестируйте его на исторических данных. Это позволит вам увидеть, как ваша стратегия работала бы в прошлом, и выявить слабые места. Многие биржи, включая <a href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Binance</a>, предоставляют доступ к историческим данным через свои API.</p>
 <h3>Мониторинг и итерации</h3>
 <p>Даже после запуска продолжайте мониторить работу агента. Рынок постоянно меняется, и ваша стратегия, а также промпты для LLM, могут потребовать корректировки. Наблюдайте, как ваш агент реагирует на различные рыночные условия, и итеративно улучшайте его логику.</p>
 <p><strong>Предупреждение:</strong> Избегайте <strong>чрезмерной оптимизации</strong> под исторические данные. Стратегия, которая идеально работала в прошлом, может не работать в будущем.</p>
@@ -203,7 +203,7 @@ if __name__ == "__main__":
 <p>Создание автономного помощника – это мощный инструмент, но он сопряжен с определенными рисками и требует ответственного подхода.</p>
 <h3>Безопасность и приватность</h3>
 <p><strong>Приватность:</strong> Использование локальных моделей (Ollama, Qwen) является ключевым для приватности. Ваши данные для анализа не покидают ваш компьютер, что исключает риски утечек или использования ваших торговых идей сторонними сервисами. Это преимущество <strong>холодного анализа</strong>.</p>
-<p><strong>Безопасность API-ключей:</strong> Ваши ключи API к <a href="https://www.binance.com/register?ref=SHARA10" rel="noreferrer noopener" target="_blank">Binance</a> или другим биржам дают доступ к вашему аккаунту. Никогда не храните их в открытом виде в коде. Используйте переменные окружения, менеджеры секретов или зашифрованные файлы. Убедитесь, что ваш компьютер защищен от вредоносного ПО.</p>
+<p><strong>Безопасность API-ключей:</strong> Ваши ключи API к <a href="https://www.binance.com/register?ref=SHARA10" rel="noopener noreferrer" target="_blank">Binance</a> или другим биржам дают доступ к вашему аккаунту. Никогда не храните их в открытом виде в коде. Используйте переменные окружения, менеджеры секретов или зашифрованные файлы. Убедитесь, что ваш компьютер защищен от вредоносного ПО.</p>
 <h3>Этика и ответственность</h3>
 <p><strong>Это не финансовый совет:</strong> Ваш ИИ-агент – это инструмент для анализа и помощи, а не автономный трейдер (если вы не программируете его на это сознательно, что требует гораздо более глубоких знаний и опыта). <strong>Всегда принимайте окончательные решения самостоятельно, основываясь на собственном анализе и понимании рисков.</strong></p>
 <p><strong>Человеческий надзор:</strong> Даже самый совершенный ИИ-агент может допустить ошибку или интерпретировать данные неверно. Всегда сохраняйте человеческий надзор за его работой.</p>
@@ -230,19 +230,11 @@ if __name__ == "__main__":
         <h3 style="color: #fff; margin: 0 0 20px 0; font-size: 1.4rem; border-left: 4px solid #f3ba2f; padding-left: 12px;">Читайте также по теме</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;">
             
-        <a href="crypto-wallet-safety.html" class="related-card" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
-            <img src="crypto-wallet-safety.png" alt="Безопасность криптокошельков: Как защитить свои цифровые активы" style="width: 100%; height: 130px; object-fit: cover;">
+        <a href="crypto-risk-management.html" class="related-card" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+            <img src="crypto-risk-management.png" alt="Продвинутый риск-менеджмент: Как не потерять депозит на Binance в 2026 году" style="width: 100%; height: 130px; object-fit: cover;">
             <div style="padding: 15px;">
-                <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Безопасность</span>
-                <h4 style="color: #fff; margin: 8px 0 0 0; font-size: 0.95rem; line-height: 1.4;">Безопасность криптокошельков: Как защитить свои цифровые активы</h4>
-            </div>
-        </a>
-        
-        <a href="binance-square-guide.html" class="related-card" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
-            <img src="binance-square-guide.png" alt="Как использовать Binance Square для поиска сильных крипто-трендов и инсайдов" style="width: 100%; height: 130px; object-fit: cover;">
-            <div style="padding: 15px;">
-                <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Трафик и блоги</span>
-                <h4 style="color: #fff; margin: 8px 0 0 0; font-size: 0.95rem; line-height: 1.4;">Как использовать Binance Square для поиска сильных крипто-трендов и инсайдов</h4>
+                <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Трейдинг для профи</span>
+                <h4 style="color: #fff; margin: 8px 0 0 0; font-size: 0.95rem; line-height: 1.4;">Продвинутый риск-менеджмент: Как не потерять депозит на Binance в 2026 году</h4>
             </div>
         </a>
         
@@ -251,6 +243,14 @@ if __name__ == "__main__":
             <div style="padding: 15px;">
                 <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Пассивный доход</span>
                 <h4 style="color: #fff; margin: 8px 0 0 0; font-size: 0.95rem; line-height: 1.4;">Как получать пассивный доход с помощью Binance Earn: Полное руководство по стейкингу</h4>
+            </div>
+        </a>
+        
+        <a href="crypto-trading-psychology.html" class="related-card" style="text-decoration: none; background: #1e2026; border: 1px solid #2b3139; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+            <img src="crypto-trading-psychology.png" alt="Психология криптотрейдинга и ИИ: Как победить себя с помощью алгоритмов" style="width: 100%; height: 130px; object-fit: cover;">
+            <div style="padding: 15px;">
+                <span style="color: #f3ba2f; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Психология и ИИ</span>
+                <h4 style="color: #fff; margin: 8px 0 0 0; font-size: 0.95rem; line-height: 1.4;">Психология криптотрейдинга и ИИ: Как победить себя с помощью алгоритмов</h4>
             </div>
         </a>
         
