@@ -66,6 +66,24 @@ def generate_sitemap():
         xml_content += f"  </url>\n"
         print(" -> Добавлен в карту: wotd.html")
     
+    # 4.8. Добавляем страницу О проекте
+    if os.path.exists("about.html"):
+        xml_content += f"  <url>\n"
+        xml_content += f"    <loc>{BASE_URL}/about.html</loc>\n"
+        xml_content += f"    <lastmod>{current_date}</lastmod>\n"
+        xml_content += f"    <priority>0.6</priority>\n"
+        xml_content += f"  </url>\n"
+        print(" -> Добавлен в карту: about.html")
+
+    # 4.9. Добавляем страницу Политики конфиденциальности
+    if os.path.exists("privacy.html"):
+        xml_content += f"  <url>\n"
+        xml_content += f"    <loc>{BASE_URL}/privacy.html</loc>\n"
+        xml_content += f"    <lastmod>{current_date}</lastmod>\n"
+        xml_content += f"    <priority>0.6</priority>\n"
+        xml_content += f"  </url>\n"
+        print(" -> Добавлен в карту: privacy.html")
+    
     # 5. Добавляем страницу дисклеймера
     if os.path.exists("disclaimer.html"):
         xml_content += f"  <url>\n"
@@ -88,7 +106,7 @@ def generate_sitemap():
                 print(f" -> Добавлен в карту: guides/{file}")
     
     # 7. Добавляем английскую версию сайта (/en/ и /en/guides/)
-    en_root_pages = ["index.html", "prompts.html", "calculator.html", "wotd.html", "news.html", "partners.html", "disclaimer.html"]
+    en_root_pages = ["index.html", "prompts.html", "calculator.html", "wotd.html", "news.html", "partners.html", "about.html", "privacy.html", "disclaimer.html"]
     for page in en_root_pages:
         en_file_path = os.path.join("en", page)
         if os.path.exists(en_file_path):
